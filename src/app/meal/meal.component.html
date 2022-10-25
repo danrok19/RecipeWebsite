@@ -1,0 +1,6 @@
+<span>
+{{prefix}} <p>Nazwa: {{meal.name}}</p><p>Czas przygotowania: {{meal.realizationTime}} </p><p>Ocena: {{meal.rating}}</p></span>
+<span *ngIf = "isClicked">
+    <input type="text" [(ngModel)]="meal.rating"/>
+    <button (click) = "doUnClick()">Chowaj Edytor</button>
+</span>

@@ -1,0 +1,13 @@
+<body>
+<p [ngClass]="'title'">Lista ulubionych potraw Ogara</p>
+<ol>
+    <li *ngFor="let meal of meals;index as i; odd as isOdd; even as isEven" (click) = "mealClicked(i)">
+        <span *ngIf="meal.rating>6">
+            <give-meal [isClicked]="whichClicked===i" prefix="Potrawa" [meal] = "meal"></give-meal><!--To jest przekazywanie przez zmienna-->
+        </span>
+        <span *ngIf="meal.rating<6">
+            <give-meal [isClicked]="whichClicked===i" prefix="Potrawa" [meal] = "meal"></give-meal><!--To jest przekazywanie przez zmienna-->
+        </span>
+    </li>
+</ol>
+</body>
