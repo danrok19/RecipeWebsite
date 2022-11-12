@@ -1,0 +1,18 @@
+<app-header></app-header>
+<body>
+    <div class="form">
+        <h2> Dodaj przepis nowej potrawy</h2>
+            <label for="name">Nazwa:</label>
+            <input type="text" id="name" #newMealName>
+            <label for="timePrep">Czas przygotowania:</label>
+            <input type="text" id="timePrep" #newTimePrep>
+            <label for="index">Numer Indeksu:</label>
+            <input type="number" id="index" #newMealIndex>
+        
+            <label for="discription">Przepis:</label>
+            <textarea class ="extraLabel" type="string" id="discription" #newMealDiscription></textarea>
+
+    
+            <button (click)="onAddMeal()">Dodaj</button>
+    </div>
+</body>

@@ -1,13 +1,16 @@
-export type MealType={
+export type MealProto={
     name: string
     realizationTime: number
     rating: number
 }
-export class MealClass {
+
+export class MealProtoClass {
     constructor(
       private name: string,
       private timePrep: number,
       private index_nr: number,
+      private rating: number,
+      private ingredientsList: Array<String>,
       private discription: string
     ) {}
   
@@ -41,5 +44,13 @@ export class MealClass {
 
     get Discription(): string{
         return this.discription;
+    }
+
+    add(ingredient: string):void{
+        this.ingredientsList.push(ingredient);
+    }
+
+    get Ingredients(): Array<String>{
+        return this.ingredientsList;
     }
 }

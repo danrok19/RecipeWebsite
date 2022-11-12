@@ -11,6 +11,7 @@ export class MealComponent implements OnInit {
   @Input() prefix: string
   @Input() isClicked:boolean = false
 
+
   constructor() { }
 
   ngOnInit(): void {
