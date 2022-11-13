@@ -1,14 +1,28 @@
+
+.addCategory{
+    border-radius: 10px;
+    background: rgb(0, 132, 255);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor:pointer;
+    width: 20%;
+    height: 35px;
+
+}
 *{
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
+li{
+    margin:25px;
+}
+
 body{
     background: #060a1f;
     height: 85%;
     overflow-y: scroll;
-}
-li{
-    margin:25px;
 }
 ul{
     display:flex;

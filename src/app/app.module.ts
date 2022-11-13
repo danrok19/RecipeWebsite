@@ -13,6 +13,10 @@ import { DeleteMealComponent } from './meal/delete-meal/delete-meal.component';
 import { EditMealComponent } from './meal/edit-meal/edit-meal.component';
 import { MealProtoComponent } from './meal-proto/meal-proto.component';
 import { MealsProtoComponent } from './meals-proto/meals-proto.component';
+import { CategoryProtoComponent } from './category-proto/category-proto.component';
+import { CategoriesProtoComponent } from './categories-proto/categories-proto.component';
+import { AddMealProtoComponent } from './add-meal-proto/add-meal-proto.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 
@@ -27,12 +31,16 @@ import { MealsProtoComponent } from './meals-proto/meals-proto.component';
     DeleteMealComponent,
     EditMealComponent,
     MealProtoComponent,
-    MealsProtoComponent
+    MealsProtoComponent,
+    CategoryProtoComponent,
+    CategoriesProtoComponent,
+    AddMealProtoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

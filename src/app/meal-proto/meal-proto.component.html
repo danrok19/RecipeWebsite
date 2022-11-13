@@ -1,5 +1,5 @@
 
-    <div class="card">
+<!--    <div class="card">
         <div class="image">
             <img width="500" height="195" src={{imgSrc}} alt="">
         </div>
@@ -20,4 +20,26 @@
         <div class="btn">
             <button class="btn">Pokaz przepis</button>
         </div>
-    </div>
+    </div>-->
+    <div class="card">
+        <div class="image">
+            <img width="500" height="195" src={{imgSrc}} alt="">
+        </div>
+        <div class="info">
+            <div class="title">
+                <h3>{{meal.Name}}</h3>
+                <h6 style="color: orange">{{category}}</h6>
+                <p>Ocena: {{meal.Rating}}</p>
+            </div>
+            <span *ngIf = "isClicked">
+                <input type="text" [(ngModel)]="meal.Rating"/>
+                <button (click) = "doUnClick()">Chowaj Edytor</button>
+            </span>
+            <div class="Time">
+                Czas
+                <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
+            </div>
+        </div>
+        <div class="btn">
+            <button class="btn">Pokaz przepis</button>
+        </div>

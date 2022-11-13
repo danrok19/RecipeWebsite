@@ -1,0 +1,20 @@
+<app-header></app-header>
+<body>
+    <div class="body">
+        <ul>
+            <li *ngFor="let category of categories;index as i; odd as isOdd; even as isEven" (click) = "categoryClicked(i)">
+                <a>
+                    <app-category-proto [category] = "category"></app-category-proto>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="btn">
+        <button class="addCategory">Dodaj Kategorie</button>
+    </div>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+    <p> </p>
+</body>
+
