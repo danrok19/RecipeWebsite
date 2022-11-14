@@ -12,17 +12,29 @@ export class AddMealProtoComponent implements OnInit {
   @ViewChild('newMealIndex', { static: true }) mealIndex: ElementRef;
   @ViewChild('newMealDiscription',{ static: true }) mealDis: ElementRef;
   @ViewChild('newMealRating',{ static: true }) mealRating: ElementRef;
-  @ViewChild('newMealIngredients',{ static: true }) mealIngredients: ElementRef;
   @ViewChild('newMealCategoryId',{ static: true }) mealCategoryId: ElementRef;
 
   @Output() newMeal = new EventEmitter<MealProtoClass>();
 
+  ingredients: String[] = [];
+  ingredient: String;
+
+
+  @ViewChild('fondovalor') fondovalor:ElementRef;
+
   constructor() { }
 
+
+  getInputIngredient(){ //odczytuje z inputa nowy skladnik i wrzuca do array ze składnikami
+    const valueInput = this.fondovalor.nativeElement.value;
+    this.ingredients.push(this.fondovalor.nativeElement.value);
+}
   ngOnInit(): void {
   }
 
-  onAddMeal() {
+
+
+  onAddMeal() {//dodawanie nowego dania z formularza
     if (
       this.mealName.nativeElement.value != '' &&
       this.mealTimePrep.nativeElement.value != '' &&
@@ -38,7 +50,7 @@ export class AddMealProtoComponent implements OnInit {
           this.mealTimePrep.nativeElement.value,
           this.mealIndex.nativeElement.value,
           this.mealRating.nativeElement.value,
-          new Array<String>,
+          this.ingredients,
           this.mealDis.nativeElement.value,
           this.mealCategoryId.nativeElement.value
         )
@@ -47,6 +59,8 @@ export class AddMealProtoComponent implements OnInit {
       this.mealTimePrep.nativeElement.value = '';
       this.mealIndex.nativeElement.value = '';
       this.mealDis.nativeElement.value = '';
+      this.mealRating.nativeElement.value = '';
+      this.mealCategoryId.nativeElement.value = '';
     }
   }
 }

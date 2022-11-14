@@ -56,8 +56,6 @@ export class MealsProtoComponent implements OnInit {
       'To jest przepis bla bla bla v5',
       0
     );
-    //this.meals.push({name:"Zupa pomidorowa", realizationTime:100, rating:2});
-    //this.meals.push({name:"Indyk z Warzywami", realizationTime:180, rating:5})
   }
 
   ngOnInit(): void {
@@ -71,7 +69,7 @@ export class MealsProtoComponent implements OnInit {
     this.meals.push(newMeal);
   }
 }
-//private name: string,
+      //private name: string,
       //private timePrep: number,
       //private index_nr: number,
       //private rating: number,

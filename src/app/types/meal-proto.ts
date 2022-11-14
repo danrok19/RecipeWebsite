@@ -57,6 +57,10 @@ export class MealProtoClass {
         return this.ingredientsList;
     }
 
+    set Ingredients(ingredients: Array<String>){
+      this.ingredientsList = ingredients;
+    }
+
     get Rating(): number {
       return this.rating;
     }
