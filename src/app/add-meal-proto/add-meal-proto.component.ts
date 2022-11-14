@@ -41,7 +41,6 @@ export class AddMealProtoComponent implements OnInit {
       this.mealIndex.nativeElement.value != '' &&
       this.mealRating.nativeElement.value != '' &&
       this.mealDis.nativeElement.value != '' &&
-      //this.mealIngredients.nativeElement.value != ''
       this.mealCategoryId.nativeElement.value != ''
     ) {
       this.newMeal.emit(
@@ -55,12 +54,14 @@ export class AddMealProtoComponent implements OnInit {
           this.mealCategoryId.nativeElement.value
         )
       );
+      //wyczyszczenie pól dla nowego meala
       this.mealName.nativeElement.value = '';
       this.mealTimePrep.nativeElement.value = '';
       this.mealIndex.nativeElement.value = '';
       this.mealDis.nativeElement.value = '';
       this.mealRating.nativeElement.value = '';
       this.mealCategoryId.nativeElement.value = '';
+      this.ingredients = new Array<String>;
     }
   }
 }
