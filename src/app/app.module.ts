@@ -16,9 +16,8 @@ import { MealsProtoComponent } from './meals-proto/meals-proto.component';
 import { CategoryProtoComponent } from './category-proto/category-proto.component';
 import { CategoriesProtoComponent } from './categories-proto/categories-proto.component';
 import { AddMealProtoComponent } from './add-meal-proto/add-meal-proto.component';
-import { AppRoutingModule } from './app-routing.module';
 import { LoginProtoComponent } from './login-proto/login-proto.component';
-
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
@@ -42,7 +41,7 @@ import { LoginProtoComponent } from './login-proto/login-proto.component';
     BrowserModule,
     FormsModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

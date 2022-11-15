@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MealProto, MealProtoClass } from '../types/meal-proto';
 
 @Component({
@@ -10,7 +11,11 @@ export class MealsProtoComponent implements OnInit {
   meals: MealProtoClass[] = []
   whichClicked: number = -1;
 
-  constructor() { 
+
+  id: any;
+  _id: number;
+
+  constructor(private route: ActivatedRoute) { 
     this.meals[0] = new MealProtoClass(
       'Bigos',
       120,
@@ -59,6 +64,11 @@ export class MealsProtoComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.id = +params.get?('id'):params.get('id');
+      console.log(this.id);
+    })
+    this._id = +this.id;
   }
 
   mealClicked(index:number):void{

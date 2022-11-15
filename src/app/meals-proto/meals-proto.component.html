@@ -1,13 +1,13 @@
-<app-header></app-header>
+
 <body>
     <ul>
         <li *ngFor="let meal of meals;index as i; odd as isOdd; even as isEven" (click) = "mealClicked(i)">
-            <span *ngIf="meal.Rating>4">
+            <span *ngIf="meal.CategoryId==this._id">
                 <app-meal-proto [isClicked]="whichClicked===i"[meal] = "meal"></app-meal-proto><!--To jest przekazywanie przez zmienna-->
             </span>
-            <span *ngIf="meal.Rating<5">
-                <app-meal-proto [isClicked]="whichClicked===i"[meal] = "meal"></app-meal-proto><!--To jest przekazywanie przez zmienna-->
-            </span>
+            <!-- <span *ngIf="meal.Rating<5">
+                <app-meal-proto [isClicked]="whichClicked===i"[meal] = "meal"></app-meal-proto><!--To jest przekazywanie przez zmienna
+            </span>-->
         </li>
     </ul>
     <app-add-meal-proto  (newMeal)="onMealAdded($event)"></app-add-meal-proto>
