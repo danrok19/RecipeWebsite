@@ -22,3 +22,9 @@
   .extraLabel{
     height: 200px;
   }
+
+.label1{
+  display:flex;
+    justify-content: center;
+    align-items: center;
+}

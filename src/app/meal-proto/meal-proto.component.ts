@@ -25,7 +25,7 @@ export class MealProtoComponent implements OnInit {
       this.imgSrc='assets/images/pomidorowa.jpg'
       this.category='Kuchnia polska'
     }
-    else if(this.meal.Name == 'Indyk z Warzywami'){
+    else if(this.meal.Name == 'Indyk'){
       this.imgSrc='assets/images/indukWarzywa.jpg'
       this.category='Kuchnia polska'
     }

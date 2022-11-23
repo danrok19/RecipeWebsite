@@ -6,6 +6,16 @@ export type MealProto={
     rating: number
 }
 
+export type MealHttp={
+    name: string,
+    timePrep: number,
+    index_nr: number,
+    rating: number,
+    ingredientsList: Array<String>,
+    discription: string,
+    categoryId: number
+}
+
 export class MealProtoClass {
     constructor(
       private name: string,

@@ -18,7 +18,7 @@ import { CategoriesProtoComponent } from './categories-proto/categories-proto.co
 import { AddMealProtoComponent } from './add-meal-proto/add-meal-proto.component';
 import { LoginProtoComponent } from './login-proto/login-proto.component';
 import { AppRoutingModule } from './app-routing.module';
-
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

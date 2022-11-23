@@ -16,11 +16,14 @@ export class AddMealProtoComponent implements OnInit {
 
   @Output() newMeal = new EventEmitter<MealProtoClass>();
 
+
   ingredients: String[] = [];
   ingredient: String;
 
 
   @ViewChild('fondovalor') fondovalor:ElementRef;
+
+
 
   constructor() { }
 
