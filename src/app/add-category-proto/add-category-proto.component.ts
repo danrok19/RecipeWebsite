@@ -36,7 +36,7 @@ export class AddCategoryProtoComponent implements OnInit {
            new CategoryProtoClass(
             this.formModel.value.name,
             this.formModel.value.index_nr,
-            new Array<MealProto>
+            new Array<String>
            )
          );
   }

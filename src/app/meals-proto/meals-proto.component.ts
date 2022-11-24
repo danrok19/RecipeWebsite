@@ -26,6 +26,10 @@ export class MealsProtoComponent implements OnInit {
          data => this.meals=data
       );
   }
+  addMeal(newMeal: MealProtoClass) {
+    const meal = new MealProtoClass(newMeal.Name,newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Discription, newMeal.CategoryId);
+    this.mealHttp.addMeal(meal).subscribe(ret => this.meals.push(meal));
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -40,13 +44,7 @@ export class MealsProtoComponent implements OnInit {
     this.whichClicked=index;
   }
   onMealAdded(newMeal: MealProtoClass) {
-    this.meals.push(newMeal);
+    //this.meals.push(newMeal);
+    this.addMeal(newMeal);
   }
 }
-      //private name: string,
-      //private timePrep: number,
-      //private index_nr: number,
-      //private rating: number,
-      //private ingredientsList: Array<String>,
-      //private discription: string,
-      //private category: CategoryProtoClass

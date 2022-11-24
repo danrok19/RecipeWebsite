@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesHttpService } from '../categories-http.service';
 import { CategoryProtoClass } from '../types/category-proto';
 import { MealProto } from '../types/meal-proto';
 
@@ -11,39 +12,13 @@ export class CategoriesProtoComponent implements OnInit {
   categories: CategoryProtoClass[] = [];
   whichClicked: number = -1;
 
-  constructor() { }
+  constructor(private categoryHttp: CategoriesHttpService) {
+    categoryHttp.getCategories().subscribe(
+      data => this.categories=data
+   );
+   }
 
   ngOnInit(): void {
-    this.categories[0] = new CategoryProtoClass(
-      'Kuchnia polska',
-      0,
-      new Array<MealProto>
-    );
-    this.categories[1] = new CategoryProtoClass(
-      'Kuchnia śląska',
-      1,
-      new Array<MealProto>
-    );
-    this.categories[2] = new CategoryProtoClass(
-      'Kuchnia amerykańska',
-      2,
-      new Array<MealProto>
-    );
-    this.categories[3] = new CategoryProtoClass(
-      'Kuchnia włoska',
-      3,
-      new Array<MealProto>
-    );
-    this.categories[4] = new CategoryProtoClass(
-      'Kuchnia wegańska',
-      4,
-      new Array<MealProto>
-    );
-    this.categories[5] = new CategoryProtoClass(
-      'Ciasta',
-      5,
-      new Array<MealProto>
-    );
   }
   categoryClicked(index:number):void{
     console.log("Klikles")
