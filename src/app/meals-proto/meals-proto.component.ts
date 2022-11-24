@@ -29,7 +29,7 @@ export class MealsProtoComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = +params.get?('id'):params.get('id');
+      this.id = +params.get?('id'):params.get('id');//problem z nullem przy pobieraniu parametru
       //console.log(this.id);
     })
     this._id = +this.id;

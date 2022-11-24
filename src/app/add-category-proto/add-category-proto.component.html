@@ -1,0 +1,11 @@
+<form [formGroup]="formModel" (ngSubmit)="onAddMeal()">
+    <h2>Dodanie nowej kategorii dań :)</h2>
+    <label for="name">Nazwa kategorii:</label>
+    <input type="text" id="name" formControlName="name">
+
+    <label for="index_nr">Nr indeksu:</label>
+    <input type="text" id="index_nr" formControlName="index_nr">
+
+    <input type="submit" value="Dodaj" />
+</form>
+

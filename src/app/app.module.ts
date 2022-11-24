@@ -17,6 +17,7 @@ import { AddMealProtoComponent } from './add-meal-proto/add-meal-proto.component
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { AddCategoryProtoComponent } from './add-category-proto/add-category-proto.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoryProtoComponent,
     CategoriesProtoComponent,
     AddMealProtoComponent,
+    AddCategoryProtoComponent,
   ],
   imports: [
     BrowserModule,

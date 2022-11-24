@@ -50,4 +50,7 @@ export class CategoriesProtoComponent implements OnInit {
     this.whichClicked=index;
   }
 
+  onCategoryAdded(newCategory: CategoryProtoClass) {
+    this.categories.push(newCategory);
+  }
 }
