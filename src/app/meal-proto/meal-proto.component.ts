@@ -19,26 +19,44 @@ export class MealProtoComponent implements OnInit {
   ngOnInit(): void {
     if(this.meal.Name == 'Bigos'){
       this.imgSrc='assets/images/Bigos.jpg'
-      this.category='Kuchnia polska'
+      //this.category='Kuchnia polska'
     }
     else if(this.meal.Name == 'Zupa pomidorowa'){
       this.imgSrc='assets/images/pomidorowa.jpg'
-      this.category='Kuchnia polska'
+      //this.category='Kuchnia polska'
     }
     else if(this.meal.Name == 'Indyk'){
       this.imgSrc='assets/images/indukWarzywa.jpg'
-      this.category='Kuchnia polska'
+      //this.category='Kuchnia polska'
     }
     else if(this.meal.Name == 'Burger'){
       this.imgSrc='assets/images/burger.jpg'
-      this.category='Kuchnia amerykańska'
+      //this.category='Kuchnia amerykańska'
     }
     else if(this.meal.Name == 'Schabowy z ziemniakami'){
       this.imgSrc='assets/images/schabowy.jpg'
-      this.category='Kuchnia polska'
+      //this.category='Kuchnia polska'
     }
     else{
       this.imgSrc='assets/images/defaultFood.jpg'
+    }
+    if(this.meal.CategoryId == 0){
+      this.category='Kuchnia polska'
+    }
+    else if(this.meal.CategoryId == 1){
+      this.category='Kuchnia sląska'
+    }
+    else if(this.meal.CategoryId == 2){
+      this.category='Kuchnia amerykańska'
+    }
+    else if(this.meal.CategoryId == 3){
+      this.category='Kuchnia włoska'
+    }
+    else if(this.meal.CategoryId == 4){
+      this.category='Kuchnia wegańska'
+    }
+    else if(this.meal.CategoryId == 5){
+      this.category='Ciasta'
     }
 
   }

@@ -5,10 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { MealComponent } from './meal/meal.component';
 import { MealsComponent } from './meals/meals.component';
-import { HeaderComponent } from './header/header.component';
 import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu/menu.component';
-import { AddMealComponent } from './add-meal/add-meal.component';
 import { DeleteMealComponent } from './meal/delete-meal/delete-meal.component';
 import { EditMealComponent } from './meal/edit-meal/edit-meal.component';
 import { MealProtoComponent } from './meal-proto/meal-proto.component';
@@ -16,7 +14,6 @@ import { MealsProtoComponent } from './meals-proto/meals-proto.component';
 import { CategoryProtoComponent } from './category-proto/category-proto.component';
 import { CategoriesProtoComponent } from './categories-proto/categories-proto.component';
 import { AddMealProtoComponent } from './add-meal-proto/add-meal-proto.component';
-import { LoginProtoComponent } from './login-proto/login-proto.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,9 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     MealsComponent,
     MealComponent,
-    HeaderComponent,
     MenuComponent,
-    AddMealComponent,
     DeleteMealComponent,
     EditMealComponent,
     MealProtoComponent,
@@ -36,7 +31,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoryProtoComponent,
     CategoriesProtoComponent,
     AddMealProtoComponent,
-    LoginProtoComponent
   ],
   imports: [
     BrowserModule,
