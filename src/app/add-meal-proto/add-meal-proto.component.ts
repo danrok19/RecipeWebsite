@@ -1,4 +1,5 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FormArray, FormControl, FormGroup} from '@angular/forms';
 import { MealProtoClass } from '../types/meal-proto';
 
 @Component({
@@ -7,64 +8,74 @@ import { MealProtoClass } from '../types/meal-proto';
   styleUrls: ['./add-meal-proto.component.css']
 })
 export class AddMealProtoComponent implements OnInit {
-  @ViewChild('newMealName', { static: true }) mealName: ElementRef;
-  @ViewChild('newTimePrep', { static: true }) mealTimePrep: ElementRef;
-  @ViewChild('newMealIndex', { static: true }) mealIndex: ElementRef;
-  @ViewChild('newMealDiscription',{ static: true }) mealDis: ElementRef;
-  @ViewChild('newMealRating',{ static: true }) mealRating: ElementRef;
-  @ViewChild('newMealCategoryId',{ static: true }) mealCategoryId: ElementRef;
-
   @Output() newMeal = new EventEmitter<MealProtoClass>();
 
-
-  ingredients: String[] = [];
-  ingredient: String;
-
-
-  @ViewChild('fondovalor') fondovalor:ElementRef;
-
-
+  formModel: FormGroup;
+  ingredients: FormArray;
 
   constructor() { }
 
+   addIngredient(): void {
+    this.ingredients.push(
+      new FormControl({
+        ingredient: new FormControl(),
+      })
+    );
 
-  getInputIngredient(){ //odczytuje z inputa nowy skladnik i wrzuca do array ze składnikami
-    const valueInput = this.fondovalor.nativeElement.value;
-    this.ingredients.push(this.fondovalor.nativeElement.value);
-}
-  ngOnInit(): void {
   }
 
+  getInputIngredient():String[]{
+    const ingredientsArrayValues = Array<String>();
+    for (let i = 0; i < this.ingredients.length; i++) {
+      ingredientsArrayValues.push( this.ingredients.at(i).value.ingredient );
+    }
+    return ingredientsArrayValues;
+}
+  ngOnInit(): void {
+    this.formModel = new FormGroup({
+      name: new FormControl(),
+      timePrep: new FormControl(),
+      index: new FormControl(),
+      rating: new FormControl(),
+      categoryId: new FormControl(),
+      ingredietnsArray: new FormArray([
+        new FormControl({
+          ingredient: new FormControl()
+        })
+      ]),
+      discription: new FormControl()
+    });
+    this.ingredients = this.formModel.get("ingredietnsArray") as FormArray;
+  }
 
+   get ingredietnsArray():FormArray{
+     return this.formModel.get("ingredietnsArray") as FormArray;
+   }
+
+  get name(){
+    return this.formModel.get('name');
+  }
 
   onAddMeal() {//dodawanie nowego dania z formularza
-    if (
-      this.mealName.nativeElement.value != '' &&
-      this.mealTimePrep.nativeElement.value != '' &&
-      this.mealIndex.nativeElement.value != '' &&
-      this.mealRating.nativeElement.value != '' &&
-      this.mealDis.nativeElement.value != '' &&
-      this.mealCategoryId.nativeElement.value != ''
-    ) {
-      this.newMeal.emit(
-        new MealProtoClass(
-          this.mealName.nativeElement.value,
-          this.mealTimePrep.nativeElement.value,
-          this.mealIndex.nativeElement.value,
-          this.mealRating.nativeElement.value,
-          this.ingredients,
-          this.mealDis.nativeElement.value,
-          this.mealCategoryId.nativeElement.value
-        )
-      );
-      //wyczyszczenie pól dla nowego meala
-      this.mealName.nativeElement.value = '';
-      this.mealTimePrep.nativeElement.value = '';
-      this.mealIndex.nativeElement.value = '';
-      this.mealDis.nativeElement.value = '';
-      this.mealRating.nativeElement.value = '';
-      this.mealCategoryId.nativeElement.value = '';
-      this.ingredients = new Array<String>;
-    }
+    this.newMeal.emit(
+           new MealProtoClass(
+            this.formModel.value.name,
+            this.formModel.value.timePrep,
+            this.formModel.value.index_nr,
+            this.formModel.value.rating,
+            this.getInputIngredient(),
+            this.formModel.value.discription,
+            this.formModel.value.categoryId
+           )
+         );
+  }
+  moreIngredients(): void {
+    this.ingredients.push(
+      new FormGroup({
+        ingredient: new FormControl(),
+      })
+    );
+
+    console.log("ingredients", this.ingredients);
   }
 }

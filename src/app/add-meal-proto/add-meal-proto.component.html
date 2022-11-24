@@ -1,35 +1,30 @@
-<div>
-    <div class="form">
-        <h2> Dodaj przepis nowej potrawy</h2>
-            <label for="name">Nazwa:</label>
-            <input type="text" id="name" #newMealName>
-            <label for="timePrep">Czas przygotowania:</label>
-            <input type="text" id="timePrep" #newTimePrep>
-            <label for="index">Numer Indeksu:</label>
-            <input type="number" id="index" #newMealIndex>
-            <label for="rating">Ocena:</label>
-            <input type="number" id="rating" #newMealRating>
-            <label for="categoryId">Id kategorii:</label> 
-            <input type="number" id="categoryId" #newMealCategoryId>
+<form [formGroup]="formModel" (ngSubmit)="onAddMeal()">
+    <label for="name">Nazwa:</label>
+    <input type="text" id="name" formControlName="name">
 
-            <label class="label1">Składniki:</label>
-            <ul>
-                <li *ngFor="let ingredient of ingredients;index as i; odd as isOdd; even as isEven">
-                    <span>
-                        {{ingredient}}
-                    </span>
-                </li>
-            </ul>
+    <label for="timePrep">Czas przygotowania:</label>
+    <input type="text" id="timePrep" formControlName="timePrep">
 
-            <label for="ingredients">Nowy składnik:</label> 
-            <input type="text" #fondovalor>
-            <button (click)="getInputIngredient()">Dodaj składnik</button>
+    <label for="index">Numer Indeksu:</label>
+    <input type="number" id="index" formControlName="index">
 
-            <label for="discription">Przepis:</label>
-            <textarea class ="extraLabel" type="string" id="discription" #newMealDiscription></textarea>
+    <label for="rating">Ocena:</label>
+    <input type="number" id="rating" formControlName="rating">
 
-    
-            <button (click)="onAddMeal()">Dodaj</button>
-    </div>
-    
-</div>
+    <label for="categoryId">Id kategorii:</label> 
+    <input type="number" id="categoryId" formControlName="categoryId">
+
+    <label for="discription">Przepis:</label>
+    <textarea class ="extraLabel" type="string" id="discription" formControlName="discription"></textarea>
+
+    <div formArrayName="ingredientsArray">
+        <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
+          <label>Nowy składnik: </label>
+          <input type="text" formControlName="ingredient" />
+        </div>
+      </div>
+    <input type="submit" value="Dodaj" />
+
+
+</form>
+<button (click)="moreIngredients()">Dodaj składnik</button>
