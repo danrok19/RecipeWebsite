@@ -18,7 +18,7 @@
     <label for="discription">Przepis:</label>
     <textarea class ="extraLabel" type="string" id="discription" formControlName="discription"></textarea>
 
-    <div formArrayName="ingredientsArray">
+    <div formArrayName="ingredietnsArray">
         <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
           <label>Nowy składnik: </label>
           <input type="text" formControlName="ingredient" />
