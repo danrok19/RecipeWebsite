@@ -18,6 +18,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddCategoryProtoComponent } from './add-category-proto/add-category-proto.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -33,6 +37,7 @@ import { AddCategoryProtoComponent } from './add-category-proto/add-category-pro
     CategoriesProtoComponent,
     AddMealProtoComponent,
     AddCategoryProtoComponent,
+    NavigationBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,10 @@ import { AddCategoryProtoComponent } from './add-category-proto/add-category-pro
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
