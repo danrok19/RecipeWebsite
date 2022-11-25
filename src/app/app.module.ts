@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { DetailsProtoComponent } from './details-proto/details-proto.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
     AddMealProtoComponent,
     AddCategoryProtoComponent,
     NavigationBarComponent,
+    DetailsProtoComponent,
   ],
   imports: [
     BrowserModule,

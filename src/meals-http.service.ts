@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of, pipe } from 'rxjs';
+import { catchError, map, Observable, of, pipe, tap } from 'rxjs';
 import { MealHttp, MealProtoClass } from './app/types/meal-proto';
 
 @Injectable({
@@ -26,6 +26,22 @@ export class MealsHttpService {
         })),
         catchError(this.handleError<MealProtoClass[]>('getMeals',[]))
     );
+  }
+
+  getMeal(index_nr: number): Observable<MealProtoClass> {
+    const url = `${this.url}/?index_nr=${index_nr}`;
+    return this.http.get<MealHttp>(url)
+    .pipe(
+      map((meal:{name:string,
+        timePrep:number,
+        index_nr:number,
+        rating:number,
+        ingredientsList: Array<String>,
+        discription: string,
+        categoryId: number}) => 
+        new MealProtoClass(meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.discription, meal.categoryId)),
+        catchError(this.handleError<MealProtoClass>(`getMeal index_nr=${index_nr}`))
+      );
   }
 
   addMeal(meal: MealProtoClass): Observable<MealProtoClass> {
