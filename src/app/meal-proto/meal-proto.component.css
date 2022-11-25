@@ -10,7 +10,7 @@
 .card{
     background: rgb(0, 132, 255);
     width: 340px;
-    height: 420px;
+    height: 460px;
     border-radius: 10px;
     color: #060a1f;
 }
@@ -48,7 +48,7 @@
     border: none;
 }
 .card .btn button{
-    padding: 20px 40px;
+    padding: 10px 30px;
     border: none;
     border-radius: 10px;
     background: #060a1f;
@@ -59,4 +59,7 @@
 }
 .input{
     width: 10px;
+}
+.Dis{
+    padding: 20px 30px;
 }
