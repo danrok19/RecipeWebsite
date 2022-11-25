@@ -7,16 +7,16 @@ import { MealProto, MealProtoClass } from '../types/meal-proto';
   styleUrls: ['./meal-proto.component.css']
 })
 export class MealProtoComponent implements OnInit {
-  //@Input() meal:MealProto;
   @Input() meal:MealProtoClass;
   @Input() isClicked:boolean = false;
   category: String;
   imgSrc: String;
-  //imgSrc = 'assets/images/'+{meal.name}+'.jpg';
 
+  mealDis:String;
   constructor() { }
 
   ngOnInit(): void {
+    this.mealDis = " Opis: "+this.meal.Discription.slice(0, 60) + "...";
     if(this.meal.Name == 'Bigos'){
       this.imgSrc='assets/images/Bigos.jpg'
     }
