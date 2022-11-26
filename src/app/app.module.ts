@@ -37,7 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
     CategoriesProtoComponent,
     AddMealProtoComponent,
     AddCategoryProtoComponent,
-    NavigationBarComponent,
+    NavigationBarComponent
   ],
   imports: [
     BrowserModule,

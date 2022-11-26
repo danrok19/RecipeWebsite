@@ -12,6 +12,7 @@ export class AddMealProtoComponent implements OnInit {
 
   formModel: FormGroup;
   ingredients: FormArray;
+  ingredientsV2:Array<String>=[]
 
   constructor() { }
 
@@ -24,32 +25,36 @@ export class AddMealProtoComponent implements OnInit {
 
   }
 
-  getInputIngredient():String[]{
-    const ingredientsArrayValues = Array<String>();
+  getInputIngredient():Array<String>{
+    const ingredientsArrayValues: Array<String> = [];
+    
     for (let i = 0; i < this.ingredients.length; i++) {
-      ingredientsArrayValues.push( this.ingredients.at(i).value.ingredient );
+      console.log(this.ingredients.at(i).value.ingredient);
+      ingredientsArrayValues.push(this.ingredients.at(i).value.ingredient);
     }
     return ingredientsArrayValues;
-}
+  }
+
   ngOnInit(): void {
     this.formModel = new FormGroup({
       name: new FormControl(),
       timePrep: new FormControl(),
-      index: new FormControl(),
+      index_nr: new FormControl(),
       rating: new FormControl(),
       categoryId: new FormControl(),
       ingredietnsArray: new FormArray([
-        new FormControl({
+        new FormGroup({
           ingredient: new FormControl()
         })
       ]),
       discription: new FormControl()
     });
-    this.ingredients = this.formModel.get("ingredietnsArray") as FormArray;
+    this.ingredients = this.formModel.get('ingredietnsArray') as FormArray;
   }
 
    get ingredietnsArray():FormArray{
-     return this.formModel.get("ingredietnsArray") as FormArray;
+     return this.formModel.get('ingredietnsArray') as FormArray;
+
    }
 
   get name(){
@@ -76,6 +81,6 @@ export class AddMealProtoComponent implements OnInit {
       })
     );
 
-    console.log("ingredients", this.ingredients);
+    //console.log("ingredients", this.ingredients);
   }
 }
