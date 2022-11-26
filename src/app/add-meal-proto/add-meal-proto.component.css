@@ -1,5 +1,6 @@
 form {
     display: flex;
+    margin: auto;
     flex-direction: column;
     padding: 10px 20px;
     width: 50%;
@@ -22,3 +23,12 @@ form {
   .extraLabel{
     height: 200px;
   }
+  button{
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+    cursor:pointer;
+}
