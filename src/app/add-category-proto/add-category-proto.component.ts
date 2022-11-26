@@ -13,6 +13,8 @@ export class AddCategoryProtoComponent implements OnInit {
   @Output() newCategory = new EventEmitter<CategoryProtoClass>();
   categories: CategoryProtoClass[];
   formModel: FormGroup;
+  isShowInfo = false;
+  showButton = true;
 
   constructor(private categoryHttp: CategoriesHttpService) {
     categoryHttp.getCategories().subscribe((data) => (this.categories = data));
