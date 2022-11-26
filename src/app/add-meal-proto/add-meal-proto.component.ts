@@ -10,6 +10,8 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MealProtoClass } from '../types/meal-proto';
 import { MealsHttpService } from 'src/meals-http.service';
 import { MealServiceService } from '../meal-service.service';
+import { CategoriesHttpService } from '../categories-http.service';
+import { CategoryProtoClass } from '../types/category-proto';
 
 @Component({
   selector: 'app-add-meal-proto',
@@ -19,14 +21,19 @@ import { MealServiceService } from '../meal-service.service';
 export class AddMealProtoComponent implements OnInit {
   @Output() newMeal = new EventEmitter<MealProtoClass>();
   meals: MealProtoClass[] = [];
+  categories: CategoryProtoClass[] = [];
   isShowInfo = false;
   showButton = true;
   formModel: FormGroup;
   ingredients: FormArray;
   ingredientsV2: Array<String> = [];
 
-  constructor(mealHttp: MealsHttpService) {
+  constructor(
+    mealHttp: MealsHttpService,
+    private categoryHttp: CategoriesHttpService
+  ) {
     mealHttp.getMeals().subscribe((data) => (this.meals = data));
+    categoryHttp.getCategories().subscribe((data) => (this.categories = data));
   }
 
   addIngredient(): void {
@@ -51,6 +58,17 @@ export class AddMealProtoComponent implements OnInit {
       }
     }
     return 0;
+  }
+
+  findCategoryId(): number {
+    for (let i = 0; i < this.categories.length; i++) {
+      console.log(this.categories[i].Name.toUpperCase(), this.formModel.value.category_name.toUpperCase() )
+      if(this.categories[i].Name.toUpperCase() == this.formModel.value.category_name.toUpperCase()) {
+        
+        return this.categories[i].Index_nr
+      }
+    }
+    return 0
   }
 
   getInputIngredient(): Array<String> {
@@ -80,7 +98,7 @@ export class AddMealProtoComponent implements OnInit {
         Validators.min(1),
         Validators.max(5),
       ]),
-      categoryId: new FormControl(),
+      category_name: new FormControl('', [Validators.required]),
       ingredientsArray: new FormArray([
         new FormGroup({
           ingredient: new FormControl('', [Validators.required]),
@@ -96,6 +114,9 @@ export class AddMealProtoComponent implements OnInit {
   }
   get name() {
     return this.formModel.get('name');
+  }
+  get category_name() {
+    return this.formModel.get('category_name');
   }
   get timePrep() {
     return this.formModel.get('timePrep');
@@ -120,7 +141,7 @@ export class AddMealProtoComponent implements OnInit {
         this.formModel.value.rating,
         this.getInputIngredient(),
         this.formModel.value.description,
-        this.formModel.value.categoryId
+        this.findCategoryId()
       )
     );
   }
@@ -130,7 +151,7 @@ export class AddMealProtoComponent implements OnInit {
         ingredient: new FormControl(),
       })
     );
-
+    this.findCategoryId()
     //console.log("ingredients", this.ingredients);
   }
 }

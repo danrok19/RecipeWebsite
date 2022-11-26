@@ -11,6 +11,11 @@
     </small>
   </div>
 
+  <label for="category_name">Nazwa kategorii:</label>
+  <input type="text" id="category_name" formControlName="category_name">
+  <div *ngIf="category_name?.invalid && (category_name?.dirty || category_name?.touched)" class="alert"></div>
+
+
   <label for="timePrep">Czas przygotowania:</label>
   <input type="number" id="timePrep" formControlName="timePrep">
   <div *ngIf="timePrep?.invalid && (timePrep?.dirty || timePrep?.touched)" class="alert">
@@ -25,10 +30,7 @@
     </small>
   </div>
 
-  <!-- <label for="index_nr">Numer Indeksu:</label>
-  <input type="number" id="index_nr" formControlName="index_nr">
-  <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
-
+ 
   <label for="rating">Trudność przygotowania:</label>
   <input type="number" id="rating" formControlName="rating" min="1" max="5">
   <div *ngIf="rating?.invalid && (rating?.dirty || rating?.touched)" class="alert">
@@ -40,8 +42,8 @@
     </small>
   </div>
 
-  <label for="categoryId">Id kategorii:</label>
-  <input type="number" id="categoryId" formControlName="categoryId">
+  <!-- <label for="categoryId">Id kategorii:</label>
+  <input type="number" id="categoryId" formControlName="categoryId"> -->
   <!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
 
 
