@@ -2,30 +2,40 @@
     <h2>Dodanie nowego dania :)</h2>
     <label for="name">Nazwa:</label>
     <input type="text" id="name" formControlName="name">
-
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert">
+      <small *ngIf="name?.errors?.['required']">
+          Nazwa jest wymagana.
+        </small>
+        <small *ngIf="name?.errors?.['minlength']">
+          Nazwa musi mieć co najmniej 3 znaki.
+        </small>
+    </div>
     <label for="timePrep">Czas przygotowania:</label>
     <input type="text" id="timePrep" formControlName="timePrep">
+    <!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
 
     <label for="index_nr">Numer Indeksu:</label>
     <input type="number" id="index_nr" formControlName="index_nr">
-
+<!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
+    
+  
     <label for="rating">Ocena:</label>
     <input type="number" id="rating" formControlName="rating">
-
+<!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
     <label for="categoryId">Id kategorii:</label> 
     <input type="number" id="categoryId" formControlName="categoryId">
-
-    <label for="discription">Przepis:</label>
-    <textarea class ="extraLabel" type="string" id="discription" formControlName="discription"></textarea>
-
-    <div formArrayName="ingredietnsArray">
+<!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
+    <label for="description">Przepis:</label>
+    <textarea class ="extraLabel" type="string" id="description" formControlName="description"></textarea>
+<!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
+    <div formArrayName="ingredientsArray">
         <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
           <label>Nowy składnik: </label>
           <input type="text" formControlName="ingredient" />
+          <!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
         </div>
       </div>
-    <input type="submit" value="Dodaj" />
-
-
+      <button style="width: 21.5rem" type="button" (click)="moreIngredients()">Dodaj składnik</button>
+    <input type="submit" value="Dodaj przepis" />
 </form>
-<button (click)="moreIngredients()">Dodaj składnik</button>
+

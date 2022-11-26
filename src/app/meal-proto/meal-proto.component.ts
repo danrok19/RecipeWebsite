@@ -17,7 +17,7 @@ export class MealProtoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.mealDis = " Opis: "+this.meal.Discription.slice(0, 60) + "...";
+    this.mealDis = " Opis: "+this.meal.Description.slice(0, 60) + "...";
     if(this.meal.Name == 'Bigos'){
       this.imgSrc='assets/images/Bigos.jpg'
     }
