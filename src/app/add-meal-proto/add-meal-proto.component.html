@@ -11,12 +11,12 @@
       Nazwa musi mieć co najmniej 3 znaki.
     </small>
   </div>
-
+ 
   <label for="category_name">Nazwa kategorii:</label>
   <input type="text" id="category_name" formControlName="category_name">
   <div *ngIf="category_name?.invalid && (category_name?.dirty || category_name?.touched)" class="alert"></div>
-
-
+ 
+ 
   <label for="timePrep">Czas przygotowania:</label>
   <input type="number" id="timePrep" formControlName="timePrep">
   <div *ngIf="timePrep?.invalid && (timePrep?.dirty || timePrep?.touched)" class="alert">
@@ -30,7 +30,7 @@
       Czas przygotowania powinien być długością w minutach.<br>
     </small>
   </div>
-
+ 
  
   <label for="rating">Trudność przygotowania:</label>
   <input type="number" id="rating" formControlName="rating" min="1" max="5">
@@ -42,12 +42,12 @@
       Trudność przygotowania powinna być w przedziale 0 - łatwy do 5 - bardzo trudny.<br>
     </small>
   </div>
-
+ 
   <!-- <label for="categoryId">Id kategorii:</label>
   <input type="number" id="categoryId" formControlName="categoryId"> -->
   <!-- <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert"></div> -->
-
-
+ 
+ 
   <label for="description">Przepis:</label>
   <textarea class="extraLabel" type="string" id="description" formControlName="description"></textarea>
   <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="alert">
@@ -55,7 +55,7 @@
       Opis jest wymagany.
     </small>
   </div>
-
+ 
   <div formArrayName="ingredientsArray">
     <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i">
       <label>Nowy składnik: </label>
@@ -63,40 +63,24 @@
       <div *ngIf="ingredient?.invalid && (ingredient?.dirty || ingredient?.touched)" class="alert">
         <small>
           Nazwa składnika nie może być pusta.
-
-
-<form [formGroup]="formModel" (ngSubmit)="onAddMeal()">
-    <h2>Dodanie nowego dania :)</h2>
-    <label for="name">Nazwa:</label>
-    <input type="text" id="name" formControlName="name">
-    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert">
-      <small *ngIf="name?.errors?.['required']">
-          Nazwa jest wymagana.
-        </small>
-        <small *ngIf="name?.errors?.['minlength']">
-          Nazwa musi mieć co najmniej 3 znaki.
         </small>
       </div>
     </div>
   </div>
   <button style="width: 21.5rem" type="button" (click)="moreIngredients()">Dodaj składnik</button>
+  <div class="tag">
+    <li *ngFor="let tag of tags;index as i; odd as isOdd; even as isEven"(click) = "tagClicked(i)">
+      {{tag}}
+      <button style="width: 10.5rem" type="button" >Dodaj tag</button>
+    </li>
+    
+  </div>
   <button class="button" type="submit" [disabled]="formModel.invalid">Dodaj przepis</button>
   <small *ngIf="formModel.invalid">
     Proszę wypełnić wszystkie pola przed dodaniem przepisu.
   </small>
-</form>
 
+</form>
+ 
 <button class="button" style="margin-left: 25%;min-width: 50%; color: black; background-color: white;"
-  (click)="isShowInfo = !isShowInfo; showButton = !showButton" *ngIf="showButton">Dodaj
-  Przepis</button>
-     <button style="width: 21.5rem" type="button" (click)="moreIngredients()">Dodaj składnik</button>
-      <div class="tag">
-        <li *ngFor="let tag of tags;index as i; odd as isOdd; even as isEven"(click) = "tagClicked(i)">
-          {{tag}}
-          <button style="width: 10.5rem" type="button" >Dodaj tag</button>
-        </li>
-        
-      </div>
-    <input type="submit" value="Dodaj przepis" />
-</form>
-
+  (click)="isShowInfo = !isShowInfo; showButton = !showButton" *ngIf="showButton">Dodaj Przepis</button>

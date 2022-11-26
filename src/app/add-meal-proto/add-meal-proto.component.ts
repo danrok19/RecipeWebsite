@@ -31,13 +31,9 @@ export class AddMealProtoComponent implements OnInit {
   whichClicked:number;
   chosenTags:String[]=[];
 
-  constructor(
-    mealHttp: MealsHttpService,
-    private categoryHttp: CategoriesHttpService
-  ) {
+  constructor(mealHttp: MealsHttpService, private categoryHttp: CategoriesHttpService,tagsService: TagsService) {
     mealHttp.getMeals().subscribe((data) => (this.meals = data));
     categoryHttp.getCategories().subscribe((data) => (this.categories = data));
-  constructor(mealHttp: MealsHttpService,tagsService: TagsService,private _formBuilder: FormBuilder) {
     mealHttp.getMeals().subscribe((data) => (this.meals = data));
      tagsService.tagsAsync.subscribe(
        data => this.tags=data
