@@ -8,7 +8,7 @@ body{
     overflow-y: scroll;
 }
 li{
-    margin:25px;
+    margin:10px;
 }
 ul{
     display:flex;

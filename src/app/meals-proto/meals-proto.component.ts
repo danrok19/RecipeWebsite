@@ -25,6 +25,8 @@ export class MealsProtoComponent implements OnInit {
     mealHttp.getMeals().subscribe(
          data => this.meals=data
       );
+
+      console.log(this.meals);
   }
   addMeal(newMeal: MealProtoClass) {
     const meal = new MealProtoClass(newMeal.Name,newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Discription, newMeal.CategoryId);

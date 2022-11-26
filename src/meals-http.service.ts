@@ -28,21 +28,42 @@ export class MealsHttpService {
     );
   }
 
-  getMeal(index_nr: number): Observable<MealProtoClass> {
-    const url = `${this.url}/?index_nr=${index_nr}`;
-    return this.http.get<MealHttp>(url)
+  getMeal(index_nr: number):Observable<MealProtoClass[]>{
+    console.log("get meal");
+    const url = `${this.url}/index_nr=${index_nr}`;
+    return this.http.get<MealHttp[]>(url)
     .pipe(
-      map((meal:{name:string,
+      map((meals:{name:string,
         timePrep:number,
         index_nr:number,
         rating:number,
         ingredientsList: Array<String>,
         discription: string,
-        categoryId: number}) => 
-        new MealProtoClass(meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.discription, meal.categoryId)),
-        catchError(this.handleError<MealProtoClass>(`getMeal index_nr=${index_nr}`))
-      );
+        categoryId: number}[])=>meals.map(meal=>{
+          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.discription, meal.categoryId);
+        })),
+        catchError(this.handleError<MealProtoClass[]>(`getMeal index_nr=${index_nr}`))
+    );
+    
   }
+
+  // getMeal(index_nr: number): Observable<MealProtoClass[]> {
+  //   const url = `${this.url}/?index_nr=${index_nr}`;
+  //   return this.http.get<MealHttp[]>(url)
+  //   .pipe(
+  //     map((meals:{name:string,
+  //       timePrep:number,
+  //       index_nr:number,
+  //       rating:number,
+  //       ingredientsList: Array<String>,
+  //       discription: string,
+  //       categoryId: number}[])=>meals.map(meal=>{
+  //         return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.discription, meal.categoryId);
+  //       })),
+      
+  //     catchError(this.handleError<MealProtoClass[]>(`getMeal index_nr=${index_nr}`))
+  //   );
+  // }
 
   addMeal(meal: MealProtoClass): Observable<MealProtoClass> {
     const httpOptions = {

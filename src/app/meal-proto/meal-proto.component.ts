@@ -11,6 +11,7 @@ export class MealProtoComponent implements OnInit {
   @Input() isClicked:boolean = false;
   category: String;
   imgSrc: String;
+  showDetails: number = -1;
 
   mealDis:String;
   constructor() { }
@@ -78,6 +79,12 @@ export class MealProtoComponent implements OnInit {
   }
   doUnClick(){
     this.isClicked = false;
+  }
+  ShowDetails(){
+    this.showDetails = this.meal.Index_nr;
+  }
+  HideDetails(){
+    this.showDetails = -1;
   }
 
 }
