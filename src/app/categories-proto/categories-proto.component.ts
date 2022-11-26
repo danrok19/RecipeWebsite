@@ -25,7 +25,13 @@ export class CategoriesProtoComponent implements OnInit {
     this.whichClicked=index;
   }
 
+
+  addCategory(newCategory: CategoryProtoClass) {
+    const meal = new CategoryProtoClass(newCategory.Name, newCategory.Index_nr);
+    this.categoryHttp.addCategory(meal).subscribe(ret => this.categories.push(meal));
+  }
   onCategoryAdded(newCategory: CategoryProtoClass) {
-    this.categories.push(newCategory);
+    //this.categories.push(newCategory);
+    this.addCategory(newCategory);
   }
 }

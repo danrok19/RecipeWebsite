@@ -1,16 +1,13 @@
-import { MealProto } from "./meal-proto";
 
 export type CategoryHttp={
   name: string,
-  index_nr: number,
-  mealsList: Array<String>
+  index_nr: number
 }
 
 export class CategoryProtoClass {
     constructor(
       private name: string,
-      private index_nr: number,
-      private mealsList: Array<String>,
+      private index_nr: number
     ) {}
   
     //--NAME----------------------------------
@@ -29,18 +26,5 @@ export class CategoryProtoClass {
   
     set Index_nr(index_nr: number) {
       this.index_nr = index_nr;
-    }
-    //--MEALLIST----------------------------------
-
-    add(meal: String):void{
-        this.mealsList.push(meal);
-    }
-
-    get MealsList(): Array<String>{
-        return this.mealsList;
-    }
-
-    set MealsList(mealsList:Array<String>){
-      this.mealsList = mealsList;
     }
 }
