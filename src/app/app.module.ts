@@ -23,6 +23,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { DeleteMealProtoComponent } from './delete-meal-proto/delete-meal-proto.component';
+import { DeleteCategoryProtoComponent } from './delete-category-proto/delete-category-proto.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DeleteMealProtoComponent } from './delete-meal-proto/delete-meal-proto.
     AddMealProtoComponent,
     AddCategoryProtoComponent,
     NavigationBarComponent,
-    DeleteMealProtoComponent
+    DeleteMealProtoComponent,
+    DeleteCategoryProtoComponent
   ],
   imports: [
     BrowserModule,

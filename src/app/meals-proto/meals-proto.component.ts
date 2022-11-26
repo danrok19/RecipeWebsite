@@ -51,4 +51,10 @@ export class MealsProtoComponent implements OnInit {
     this.addMeal(newMeal);
   }
 
+  deleteMeal(deleteMeal: MealProtoClass) {
+    const mealToDeleteIndex_nr = this.meals.findIndex((meal) => {
+      return meal.Index_nr === deleteMeal.Index_nr;
+    });
+    this.meals.splice(mealToDeleteIndex_nr, 1);
+  }
 }

@@ -13,7 +13,8 @@ export class MealProtoComponent implements OnInit {
   category: String;
   imgSrc: String;
   showDetails: number = -1;
-  ToDelete: number = -1;
+  mealToDelete: number = -1;
+  //deleteThis: boolean = false;
   @Output() doDeleteInParent = new EventEmitter<void>();
 
   mealDis:String;
@@ -94,12 +95,14 @@ export class MealProtoComponent implements OnInit {
     this.mealHttp.deleteMeal(this.meal.Index_nr).subscribe();
   }
 
-  deleteWhich() {
-    this.ToDelete = this.meal.Index_nr;
+  deleteThisMeal() {
+    this.mealToDelete = this.meal.Index_nr;
+    this.deleteMeal();
+
   }
   isDelete(e: boolean) {
     if (!e) {
-      this.ToDelete = -1;
+      this.mealToDelete = -1;
     } else {
       this.doDeleteInParent.emit();
     }
