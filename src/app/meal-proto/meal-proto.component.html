@@ -20,7 +20,7 @@
         <div class="btn">
             <button class="btn">Pokaz przepis</button>
         </div>
-    </div>-->
+    </div>-->"
     <div class="card"  *ngIf = "showDetails===-1">
         <div class="image">
             <img width="500" height="195" src={{imgSrc}} alt="">
@@ -29,7 +29,7 @@
             <div class="title">
                 <h3>{{meal.Name}}</h3>
                 <h6 style="color: orange">{{category}}</h6>
-                <p>Ocena: {{meal.Rating}}</p>
+                <p>Poziom trudności: {{meal.Rating}}</p>
             </div>
             <!-- <span *ngIf = "isClicked">
                 <input type="text" [(ngModel)]="meal.Rating"/>
@@ -42,11 +42,12 @@
         </div>
         <div class="btn">
             <button (click)="ShowDetails()" class="btn">Pokaz przepis</button>
-            <button class="btn">Usuń danie</button>
+            <button (click)="deleteThisMeal()">Usuń</button>
         </div>
         <div class="Dis">
             <p>{{mealDis}}</p>
         </div>
+        <app-delete-meal-proto *ngIf="mealToDelete!=-1" (isDelete)="isDelete($event)"></app-delete-meal-proto>
     </div>
 
 
@@ -59,7 +60,7 @@
                     <div class="title">
                         <h3>{{meal.Name}}</h3>
                         <h6 style="color: orange">{{category}}</h6>
-                        <p>Ocena: {{meal.Rating}}</p>
+                        <p>Poziom trudności: {{meal.Rating}}</p>
                         <div class="Time">
                             Czas
                             <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
@@ -79,5 +80,4 @@
             </div>
             <div class="btn">
                 <button  (click)="HideDetails()" class="btn">Schowaj przepis</button>
-                <button class="btn">Usuń danie</button>
             </div>

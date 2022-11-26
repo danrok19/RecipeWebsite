@@ -3,7 +3,7 @@
     <ul>
         <li *ngFor="let meal of meals;index as i; odd as isOdd; even as isEven" (click) = "mealClicked(i)">
             <span *ngIf="meal.CategoryId==this._id">
-                <app-meal-proto [isClicked]="whichClicked===i"[meal] = "meal"></app-meal-proto><!--To jest przekazywanie przez zmienna-->
+                <app-meal-proto [isClicked]="whichClicked===i"[meal] = "meal" (doDeleteInParent)="deleteMeal(meal)"></app-meal-proto><!--To jest przekazywanie przez zmienna-->
             </span>
         </li>
     </ul>

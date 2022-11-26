@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { MealsHttpService } from 'src/meals-http.service';
 import { MealProto, MealProtoClass } from '../types/meal-proto';
 
 @Component({
@@ -12,9 +13,12 @@ export class MealProtoComponent implements OnInit {
   category: String;
   imgSrc: String;
   showDetails: number = -1;
+  mealToDelete: number = -1;
+  //deleteThis: boolean = false;
+  @Output() doDeleteInParent = new EventEmitter<void>();
 
   mealDis:String;
-  constructor() { }
+  constructor(private mealHttp: MealsHttpService) { }
 
   ngOnInit(): void {
     this.mealDis = " Opis: "+this.meal.Description.slice(0, 60) + "...";
@@ -85,6 +89,23 @@ export class MealProtoComponent implements OnInit {
   }
   HideDetails(){
     this.showDetails = -1;
+  }
+  deleteMeal(){
+    console.log("delete" + this.meal.Index_nr);
+    this.mealHttp.deleteMeal(this.meal.Index_nr).subscribe();
+  }
+
+  deleteThisMeal() {
+    this.mealToDelete = this.meal.Index_nr;
+    this.deleteMeal();
+
+  }
+  isDelete(e: boolean) {
+    if (!e) {
+      this.mealToDelete = -1;
+    } else {
+      this.doDeleteInParent.emit();
+    }
   }
 
 }

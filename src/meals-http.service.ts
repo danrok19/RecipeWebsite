@@ -75,6 +75,19 @@ export class MealsHttpService {
       );
   }
 
+  deleteMeal(index_nr: number): Observable<unknown> {
+    console.log("wywolanie w service delete meala o index_nr: "+index_nr);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    const _url = `${this.url}/${index_nr}`; 
+    console.log("url: "+_url);
+    return this.http.delete(_url, httpOptions)
+      .pipe(
+        catchError(this.handleError('deleteMeal'))
+      );
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation + ' failed' + error);

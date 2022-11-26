@@ -21,7 +21,7 @@ export class CategoriesProtoComponent implements OnInit {
   ngOnInit(): void {
   }
   categoryClicked(index:number):void{
-    console.log("Klikles")
+    console.log("Klikles"+index);
     this.whichClicked=index;
   }
 

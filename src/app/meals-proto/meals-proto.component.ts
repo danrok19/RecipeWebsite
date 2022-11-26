@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MealsHttpService } from 'src/meals-http.service';
 import { MealServiceService } from '../meal-service.service';
+import { DeleteMealComponent } from '../meal/delete-meal/delete-meal.component';
 import { MealProto, MealProtoClass } from '../types/meal-proto';
 
 @Component({
@@ -48,5 +49,12 @@ export class MealsProtoComponent implements OnInit {
   onMealAdded(newMeal: MealProtoClass) {
     //this.meals.push(newMeal);
     this.addMeal(newMeal);
+  }
+
+  deleteMeal(deleteMeal: MealProtoClass) {
+    const mealToDeleteIndex_nr = this.meals.findIndex((meal) => {
+      return meal.Index_nr === deleteMeal.Index_nr;
+    });
+    this.meals.splice(mealToDeleteIndex_nr, 1);
   }
 }
