@@ -12,7 +12,7 @@ export type MealHttp={
     index_nr: number,
     rating: number,
     ingredientsList: Array<String>,
-    discription: string,
+    description: string,
     categoryId: number
 }
 
@@ -23,7 +23,7 @@ export class MealProtoClass {
       private index_nr: number,
       private rating: number,
       private ingredientsList: Array<String>,
-      private discription: string,
+      private description: string,
       private categoryId: number
     ) {}
   
@@ -51,12 +51,12 @@ export class MealProtoClass {
       this.index_nr = index_nr;
     }
 
-    set Discription(discription: string){
-        this.discription = discription;
+    set Description(description: string){
+        this.description = description;
     }
 
-    get Discription(): string{
-        return this.discription;
+    get Description(): string{
+        return this.description;
     }
 
     add(ingredient: string):void{

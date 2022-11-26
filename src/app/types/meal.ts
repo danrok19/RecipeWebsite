@@ -8,7 +8,7 @@ export class MealClass {
       private name: string,
       private timePrep: number,
       private index_nr: number,
-      private discription: string
+      private description: string
     ) {}
   
     get Name(): string {
@@ -35,11 +35,11 @@ export class MealClass {
       this.index_nr = index_nr;
     }
 
-    set Discription(discription: string){
-        this.discription = discription;
+    set Description(description: string){
+        this.description = description;
     }
 
-    get Discription(): string{
-        return this.discription;
+    get Description(): string{
+        return this.description;
     }
 }

@@ -30,7 +30,7 @@ export class MealsProtoComponent implements OnInit {
       console.log(this.meals);
   }
   addMeal(newMeal: MealProtoClass) {
-    const meal = new MealProtoClass(newMeal.Name,newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Discription, newMeal.CategoryId);
+    const meal = new MealProtoClass(newMeal.Name,newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Description, newMeal.CategoryId);
     this.mealHttp.addMeal(meal).subscribe(ret => this.meals.push(meal));
   }
 
@@ -51,4 +51,10 @@ export class MealsProtoComponent implements OnInit {
     this.addMeal(newMeal);
   }
 
+  deleteMeal(deleteMeal: MealProtoClass) {
+    const mealToDeleteIndex_nr = this.meals.findIndex((meal) => {
+      return meal.Index_nr === deleteMeal.Index_nr;
+    });
+    this.meals.splice(mealToDeleteIndex_nr, 1);
+  }
 }

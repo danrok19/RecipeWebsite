@@ -25,6 +25,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DeleteMealProtoComponent } from './delete-meal-proto/delete-meal-proto.component';
 import { FlexFilterPipe } from './flex-filter.pipe';
 
+import { DeleteCategoryProtoComponent } from './delete-category-proto/delete-category-proto.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { FlexFilterPipe } from './flex-filter.pipe';
     NavigationBarComponent,
     DeleteMealProtoComponent,
     FlexFilterPipe,
+    DeleteCategoryProtoComponent
   ],
   imports: [
     BrowserModule,
