@@ -42,11 +42,12 @@
         </div>
         <div class="btn">
             <button (click)="ShowDetails()" class="btn">Pokaz przepis</button>
-            <button class="btn">Usuń danie</button>
+            <button (click)="deleteMeal()" class="btn">Usuń danie</button>
         </div>
         <div class="Dis">
             <p>{{mealDis}}</p>
         </div>
+        <app-delete-meal-proto *ngIf="ToDelete!=-1" (isDelete)="isDelete($event)"></app-delete-meal-proto>
     </div>
 
 
@@ -79,5 +80,5 @@
             </div>
             <div class="btn">
                 <button  (click)="HideDetails()" class="btn">Schowaj przepis</button>
-                <button class="btn">Usuń danie</button>
+                <button (click)="deleteMeal()" class="btn">Usuń danie</button>
             </div>
