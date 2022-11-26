@@ -34,6 +34,9 @@ export class CategoryProtoComponent implements OnInit {
     else if(this.category.Name == 'Kuchnia wegańska'){
       this.imgSrc='assets/images/vegeCuisine.jpg'
     }
+    else{
+      this.imgSrc='assets/images/cateogryDef.jpg'
+    }
 
   }
 

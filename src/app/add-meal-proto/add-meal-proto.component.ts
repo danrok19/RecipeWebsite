@@ -1,15 +1,14 @@
 import {
   Component,
-  ElementRef,
   EventEmitter,
   OnInit,
   Output,
-  ViewChild,
 } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MealProtoClass } from '../types/meal-proto';
 import { MealsHttpService } from 'src/meals-http.service';
 import { MealServiceService } from '../meal-service.service';
+import { TagsService } from '../tags.service';
 
 @Component({
   selector: 'app-add-meal-proto',
@@ -19,14 +18,23 @@ import { MealServiceService } from '../meal-service.service';
 export class AddMealProtoComponent implements OnInit {
   @Output() newMeal = new EventEmitter<MealProtoClass>();
   meals: MealProtoClass[] = [];
+  tags: String[] = [];
 
   formModel: FormGroup;
   ingredients: FormArray;
   ingredientsV2: Array<String> = [];
+  whichClicked:number;
+  chosenTags:String[]=[];
 
-  constructor(mealHttp: MealsHttpService) {
+  constructor(mealHttp: MealsHttpService,tagsService: TagsService,private _formBuilder: FormBuilder) {
     mealHttp.getMeals().subscribe((data) => (this.meals = data));
+     tagsService.tagsAsync.subscribe(
+       data => this.tags=data
+   );
+
+   
   }
+
 
   addIngredient(): void {
     this.ingredients.push(
@@ -102,5 +110,14 @@ export class AddMealProtoComponent implements OnInit {
     );
 
     //console.log("ingredients", this.ingredients);
+  }
+
+  tagClicked(index:number):void{
+    console.log("Klikles tag o id:"+index);
+    this.whichClicked=index;
+    this.chosenTags.push(this.tags[index])
+    // for(let i=0;i<this.chosenTags.length;i++){
+    //   console.log(this.chosenTags[i]);
+    // }
   }
 }
