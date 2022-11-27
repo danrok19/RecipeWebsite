@@ -7,6 +7,7 @@
                     <!-- <app-category-proto [category] = "category" ></app-category-proto> -->
                     <app-category-proto  [isClicked]="whichClicked===i" [category] = "category" (doDeleteInParent)="deleteCategory(category)"></app-category-proto>
                 </a>
+                    <!-- <app-edit-category-proto [categoryForEdit]="category" (editMethod)="onEdit($event)"></app-edit-category-proto> -->
             </li>
         </ul>
     </div>

@@ -1,0 +1,18 @@
+
+<form [formGroup]="formModel" (ngSubmit)="Edit()">
+    <h2>Dodanie nowej kategorii dań :)</h2>
+    <label for="name">Nazwa kategorii:</label>
+    <input type="text" formControlName="name">
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert">
+      <div *ngIf="name?.errors?.['required']">
+        Nazwa jest wymagana.
+      </div>
+      <small *ngIf="name?.errors?.['minlength']">
+        Nazwa musi mieć co najmniej 3 znaki.
+      </small>
+    </div>
+    <input type="submit" value="Zapisz" [disabled]="formModel.invalid" />
+    <small *ngIf="formModel.invalid">
+      Proszę wypełnić wszystkie pola przed dodaniem przepisu.
+    </small>
+  </form>

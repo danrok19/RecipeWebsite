@@ -9,7 +9,7 @@ export class TagsService {
   tags: String[] = [];
 
   constructor() {
-    this.tags.push("obiad", "śniadanie", "kolacja", "ostry", "polska", "ameryka", "parówka", "piekarnik", "taca", "łagodny", "lekkie", "święta", "tradycja", "zimne", "ciepłe")
+    this.tags.push("obiad", "śniadanie", "kolacja", "deser")
    }
 
 
@@ -17,6 +17,6 @@ export class TagsService {
     return of(this.tags);
    }
   getTags(): String[] {
-    return ["obiad", "śniadanie", "kolacja", "ostry", "polska", "ameryka", "parówka", "piekarnik", "taca", "łagodny", "lekkie", "święta", "tradycja", "zimne", "ciepłe"];
+    return ["obiad", "śniadanie", "kolacja", "święta", "deser"];
   }
 }

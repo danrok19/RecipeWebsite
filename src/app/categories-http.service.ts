@@ -46,6 +46,18 @@ export class CategoriesHttpService {
       );
   }
 
+  editCategory(category:CategoryProtoClass):Observable<CategoryProtoClass>{
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+
+    return this.http.put<CategoryProtoClass>(this.url + '/' + category.Index_nr, category, httpOptions)
+    .pipe(
+      catchError(this.handleError('editCategory', category))
+    );
+    
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation + ' failed' + error);

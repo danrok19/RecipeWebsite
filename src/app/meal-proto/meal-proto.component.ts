@@ -14,10 +14,12 @@ export class MealProtoComponent implements OnInit {
   imgSrc: String;
   showDetails: number = -1;
   mealToDelete: number = -1;
-  //deleteThis: boolean = false;
   @Output() doDeleteInParent = new EventEmitter<void>();
 
+  @Output("showEditForm") showEditInParent:EventEmitter<number>=new EventEmitter();
+
   mealDis:String;
+  clicked: number=-1;
   constructor(private mealHttp: MealsHttpService) { }
 
   ngOnInit(): void {
@@ -105,6 +107,12 @@ export class MealProtoComponent implements OnInit {
     } else {
       this.doDeleteInParent.emit();
     }
+  }
+
+  clickOnMeal(which:number):void{
+    this.clicked=which;
+    this.showEditInParent.emit(which);
+
   }
 
 }

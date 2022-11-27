@@ -69,9 +69,9 @@
   </div>
   <button style="width: 21.5rem" type="button" (click)="moreIngredients()">Dodaj składnik</button>
   <div class="tag">
+    <p>Wybierz tagi:</p>
     <li *ngFor="let tag of tags;index as i; odd as isOdd; even as isEven"(click) = "tagClicked(i)">
-      {{tag}}
-      <button style="width: 10.5rem" type="button" >Dodaj tag</button>
+      <button style="width: 10.5rem" type="button" >{{tag}}</button>
     </li>
     
   </div>

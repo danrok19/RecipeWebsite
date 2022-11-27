@@ -26,6 +26,8 @@ import { DeleteMealProtoComponent } from './delete-meal-proto/delete-meal-proto.
 import { FlexFilterPipe } from './flex-filter.pipe';
 
 import { DeleteCategoryProtoComponent } from './delete-category-proto/delete-category-proto.component';
+import { EditCategoryProtoComponent } from './edit-category-proto/edit-category-proto.component';
+import { EditMealProtoComponent } from './edit-meal-proto/edit-meal-proto.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { DeleteCategoryProtoComponent } from './delete-category-proto/delete-cat
     NavigationBarComponent,
     DeleteMealProtoComponent,
     FlexFilterPipe,
-    DeleteCategoryProtoComponent
+    DeleteCategoryProtoComponent,
+    EditCategoryProtoComponent,
+    EditMealProtoComponent
   ],
   imports: [
     BrowserModule,

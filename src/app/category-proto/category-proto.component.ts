@@ -18,6 +18,10 @@ export class CategoryProtoComponent implements OnInit {
   checkingMeals: MealProtoClass[] = [];
   canDelete:boolean = true;//true => mozemy usunac kategorie/ false => nie mozemy usunac kategorii
 
+
+  @Output("showEditForm") showEditInParent:EventEmitter<number>=new EventEmitter();
+  chosen: number=-1;
+
   constructor(private categoryHttp: CategoriesHttpService, private mealHttp: MealsHttpService) {
     mealHttp.getMeals().subscribe(
       data => this.checkingMeals=data
@@ -82,6 +86,12 @@ export class CategoryProtoComponent implements OnInit {
     } else {
       this.doDeleteInParent.emit();
     }
+  }
+
+  clickOnCategory(which:number):void{
+    this.chosen=which;
+    this.showEditInParent.emit(which);
+
   }
 
 }

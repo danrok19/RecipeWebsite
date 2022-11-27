@@ -41,4 +41,18 @@ export class CategoriesProtoComponent implements OnInit {
     });
     this.categories.splice(categoryToDeleteIndex_nr, 1);
   }
+
+
+  doEdit(categoryEdit:CategoryProtoClass){
+    this.categoryHttp.editCategory(categoryEdit);
+  }
+
+  onCatagoryEdited(editedCategory: CategoryProtoClass) {
+    this.editCategory(editedCategory);
+  }
+
+  editCategory(editedCategory: CategoryProtoClass) {
+    const category = new CategoryProtoClass(editedCategory.Name,editedCategory.Index_nr);
+    this.categoryHttp.editCategory(category).subscribe();
+  }
 }

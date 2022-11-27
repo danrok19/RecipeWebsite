@@ -88,6 +88,22 @@ export class MealsHttpService {
       );
   }
 
+  editMeal(meal:MealProtoClass):Observable<MealProtoClass>{
+    console.log("wywolanie w service edit meala o index_nr: "+meal.Index_nr);
+    console.log(meal.Name);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    const _url = `${this.url}/${meal.Index_nr}`; 
+
+    return this.http.put<MealProtoClass>(_url, meal, httpOptions)
+    .pipe(
+      catchError(this.handleError('editMeal', meal))
+    );
+    
+  }
+  
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation + ' failed' + error);
