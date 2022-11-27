@@ -21,8 +21,9 @@ export class MealsHttpService {
         rating:number,
         ingredientsList: Array<String>,
         description: string,
-        categoryId: number}[])=>meals.map(meal=>{
-          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId);
+        categoryId: number,
+        tagsList: Array<String>}[])=>meals.map(meal=>{
+          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId,meal.tagsList);
         })),
         catchError(this.handleError<MealProtoClass[]>('getMeals',[]))
     );
@@ -39,8 +40,9 @@ export class MealsHttpService {
         rating:number,
         ingredientsList: Array<String>,
         description: string,
-        categoryId: number}[])=>meals.map(meal=>{
-          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId);
+        categoryId: number,
+        tagsList: Array<String>}[])=>meals.map(meal=>{
+          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId, meal.tagsList);
         })),
         catchError(this.handleError<MealProtoClass[]>(`getMeal index_nr=${index_nr}`))
     );

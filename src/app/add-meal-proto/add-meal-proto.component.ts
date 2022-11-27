@@ -148,7 +148,8 @@ export class AddMealProtoComponent implements OnInit {
         this.formModel.value.rating,
         this.getInputIngredient(),
         this.formModel.value.description,
-        this.findCategoryId()
+        this.findCategoryId(),
+        this.chosenTags
       )
     );
   }

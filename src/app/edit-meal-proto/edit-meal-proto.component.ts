@@ -68,7 +68,8 @@ export class EditMealProtoComponent {
           this.formModel.value.rating,
           this.mealForEdit.Ingredients,
           this.formModel.value.description,
-          this.mealForEdit.CategoryId
+          this.mealForEdit.CategoryId,
+          this.mealForEdit.TagsList
         ));
 
   }
