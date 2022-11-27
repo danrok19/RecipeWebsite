@@ -12,6 +12,9 @@ export class CategoriesProtoComponent implements OnInit {
   categories: CategoryProtoClass[] = [];
   whichClicked: number = -1;
 
+  _showEditForm:boolean= false;
+  whichCategoryForEdit:number =-1;
+
   constructor(private categoryHttp: CategoriesHttpService) {
     categoryHttp.getCategories().subscribe(
       data => this.categories=data
@@ -44,15 +47,12 @@ export class CategoriesProtoComponent implements OnInit {
 
 
   doEdit(categoryEdit:CategoryProtoClass){
-    this.categoryHttp.editCategory(categoryEdit);
+    this.categoryHttp.editCategory(categoryEdit).subscribe();
+     this._showEditForm=false;
+     this.whichCategoryForEdit=-1;
   }
-
-  onCatagoryEdited(editedCategory: CategoryProtoClass) {
-    this.editCategory(editedCategory);
-  }
-
-  editCategory(editedCategory: CategoryProtoClass) {
-    const category = new CategoryProtoClass(editedCategory.Name,editedCategory.Index_nr);
-    this.categoryHttp.editCategory(category).subscribe();
+  showEditForm(index_nr: number):void{
+    this._showEditForm=true;
+    this.whichCategoryForEdit=this.whichClicked;
   }
 }

@@ -9,7 +9,7 @@ import { CategoryProtoClass } from '../types/category-proto';
 })
 export class EditCategoryProtoComponent {
   @Input() categoryForEdit:CategoryProtoClass;
-  @Output("editMethod") doEditInParent:EventEmitter<CategoryProtoClass>=new EventEmitter();
+  @Output("editMethod1") doEditInParent:EventEmitter<CategoryProtoClass>=new EventEmitter();
   categoryNewValues: CategoryProtoClass;
   formModel: FormGroup;
   constructor(){
@@ -27,13 +27,12 @@ export class EditCategoryProtoComponent {
     return this.formModel.get('name');
   }
 
-  Edit() {
-    //edytowwanie kategorii z formularza
-    if(this.formModel.value.name.length>2 && this.formModel.value.name.length<151){
+  hide():void{
     this.doEditInParent.emit(
-      new CategoryProtoClass(this.formModel.value.name,this.categoryForEdit.Index_nr)
-    );
-  }
-  
-  }
+      new CategoryProtoClass(
+        this.formModel.value.name,
+        this.categoryForEdit.Index_nr,
+        ));
+
+}
 }

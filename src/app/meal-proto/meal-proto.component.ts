@@ -112,7 +112,6 @@ export class MealProtoComponent implements OnInit {
   clickOnMeal(which:number):void{
     this.clicked=which;
     this.showEditInParent.emit(which);
-
   }
 
 }

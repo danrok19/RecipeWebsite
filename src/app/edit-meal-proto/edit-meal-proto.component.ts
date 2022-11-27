@@ -69,7 +69,7 @@ export class EditMealProtoComponent {
           this.mealForEdit.Ingredients,
           this.formModel.value.description,
           this.mealForEdit.CategoryId
-          ));
+        ));
 
   }
 

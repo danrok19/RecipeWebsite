@@ -20,7 +20,7 @@ export class CategoryProtoComponent implements OnInit {
 
 
   @Output("showEditForm") showEditInParent:EventEmitter<number>=new EventEmitter();
-  chosen: number=-1;
+  clicked: number=-1;
 
   constructor(private categoryHttp: CategoriesHttpService, private mealHttp: MealsHttpService) {
     mealHttp.getMeals().subscribe(
@@ -89,9 +89,8 @@ export class CategoryProtoComponent implements OnInit {
   }
 
   clickOnCategory(which:number):void{
-    this.chosen=which;
+    this.clicked=which;
     this.showEditInParent.emit(which);
-
   }
 
 }

@@ -1,13 +1,13 @@
-
 <body>
     <div class="body">
         <ul>
             <li *ngFor="let category of categories;index as i; odd as isOdd; even as isEven" (click) = "categoryClicked(i)">
-                <a>
-                    <!-- <app-category-proto [category] = "category" ></app-category-proto> -->
-                    <app-category-proto  [isClicked]="whichClicked===i" [category] = "category" (doDeleteInParent)="deleteCategory(category)"></app-category-proto>
-                </a>
-                    <!-- <app-edit-category-proto [categoryForEdit]="category" (editMethod)="onEdit($event)"></app-edit-category-proto> -->
+                <span>
+                    <app-category-proto  [isClicked]="whichClicked===i" [category] = "category" (doDeleteInParent)="deleteCategory(category)" (showEditForm)="showEditForm($event)"></app-category-proto>
+                    <span *ngIf="whichCategoryForEdit==i">
+                        <app-edit-category-proto [categoryForEdit]="category" (editMethod1)="doEdit($event)"></app-edit-category-proto>
+                    </span>
+                </span>
             </li>
         </ul>
     </div>
