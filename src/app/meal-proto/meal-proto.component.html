@@ -60,6 +60,11 @@
         <h3>{{meal.Name}}</h3>
         <h6 style="color: orange">{{category}}</h6>
         <p>Poziom trudności: {{meal.Rating}}</p>
+        <ul class="row" *ngFor="let tag of meal.TagsList">
+          <span>
+              <ion-icon name="pricetags-outline"></ion-icon>{{tag}}
+          </span>
+      </ul>
         <div class="Time">
           Czas
           <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
@@ -82,5 +87,5 @@
   </div>
   <div class="btn">
     <button (click)="HideDetails()" class="btn">Schowaj przepis</button>
-    <button (click)="deleteThisMeal()" class="btn">Usuń danie</button>
+    <button (click)="clickOnMeal(meal.Index_nr)">Edytuj przepis</button>
   </div>

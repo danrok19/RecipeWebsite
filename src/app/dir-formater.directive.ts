@@ -19,7 +19,7 @@ export class DirFormaterDirective implements AfterViewInit {
     const elDate: string[] = this.date.split('-');
     let outDate = '';
     elDate.forEach((el, index) => index < (elDate.length - 1) ? outDate += el + this.sep : outDate += el);
-    this.element.nativeElement.innerText = 'Dodany dnia: ' + outDate;
+    this.element.nativeElement.innerText = 'Wyświetlany ostatnio: ' + outDate;
   }
 
   changeLook(old: boolean): void {
