@@ -4,7 +4,8 @@
         <ul>
             <li *ngFor="let category of categories;index as i; odd as isOdd; even as isEven" (click) = "categoryClicked(i)">
                 <a>
-                    <app-category-proto [category] = "category"></app-category-proto>
+                    <!-- <app-category-proto [category] = "category" ></app-category-proto> -->
+                    <app-category-proto  [isClicked]="whichClicked===i" [category] = "category" (doDeleteInParent)="deleteCategory(category)"></app-category-proto>
                 </a>
             </li>
         </ul>

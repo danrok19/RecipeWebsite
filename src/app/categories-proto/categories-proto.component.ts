@@ -34,4 +34,11 @@ export class CategoriesProtoComponent implements OnInit {
     //this.categories.push(newCategory);
     this.addCategory(newCategory);
   }
+
+  deleteCategory(deleteCategory: CategoryProtoClass) {
+    const categoryToDeleteIndex_nr = this.categories.findIndex((category) => {
+      return category.Index_nr === deleteCategory.Index_nr;
+    });
+    this.categories.splice(categoryToDeleteIndex_nr, 1);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-delete-category-proto',
@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-category-proto.component.css']
 })
 export class DeleteCategoryProtoComponent {
+  @Output() isDelete = new EventEmitter<boolean>();
+
+  constructor(){
+
+  }
+
+ngOnInit(): void {}
+  delete() {
+    this.isDelete.emit(true);
+  }
 
 }

@@ -98,7 +98,6 @@ export class MealProtoComponent implements OnInit {
   deleteThisMeal() {
     this.mealToDelete = this.meal.Index_nr;
     this.deleteMeal();
-
   }
   isDelete(e: boolean) {
     if (!e) {
