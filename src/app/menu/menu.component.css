@@ -1,0 +1,16 @@
+body{
+    background: #060a1f;
+}
+
+div{
+    position: relative;
+    color:aqua;
+    font-family: cursive;
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 1000;
+    font-size: 200px;
+}
