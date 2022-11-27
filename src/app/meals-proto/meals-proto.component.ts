@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MealsHttpService } from 'src/meals-http.service';
 import { MealServiceService } from '../meal-service.service';
@@ -13,41 +14,50 @@ import { MealProto, MealProtoClass } from '../types/meal-proto';
 export class MealsProtoComponent implements OnInit {
   meals: MealProtoClass[] = []
   whichClicked: number = -1;
+  mealsFilter: FormControl = new FormControl();
+  showEditFormVar = false;
+  whichMealForEdit = -1;
 
-  showEditFormVar= false;
-  whichMealForEdit=-1;
+  //items: FormArray;
+  filterValue: string;
+  mealsarr: MealProto[] = []
 
 
   id: any;
   _id: number;
 
-  constructor(private route: ActivatedRoute, private mealService: MealServiceService, private mealHttp: MealsHttpService) { 
+  constructor(private route: ActivatedRoute, private mealService: MealServiceService, private mealHttp: MealsHttpService) {
     //this.meals = mealService.Meals;
     // mealService.MealsAsync.subscribe(
     //   data => this.meals=data
     // );
     mealHttp.getMeals().subscribe(
-         data => this.meals=data
-      );
+      data => this.meals = data
+    );
 
-      //console.log(this.meals);
+    this.mealsFilter.valueChanges.subscribe({
+      next: val => { this.filterValue = val; },
+      error: error => console.error(error)
+    });
+
+    //console.log(this.meals);
   }
   addMeal(newMeal: MealProtoClass) {
-    const meal = new MealProtoClass(newMeal.Name,newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Description, newMeal.CategoryId, newMeal.TagsList);
+    const meal = new MealProtoClass(newMeal.Name, newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Description, newMeal.CategoryId, newMeal.TagsList);
     this.mealHttp.addMeal(meal).subscribe(ret => this.meals.push(meal));
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = +params.get?('id'):params.get('id');//problem z nullem przy pobieraniu parametru
+      this.id = +params.get ? ('id') : params.get('id');//problem z nullem przy pobieraniu parametru
       //console.log(this.id);
     })
     this._id = +this.id;
   }
 
-  mealClicked(index:number):void{
+  mealClicked(index: number): void {
     console.log("Klikles")
-    this.whichClicked=index;
+    this.whichClicked = index;
   }
   onMealAdded(newMeal: MealProtoClass) {
     //this.meals.push(newMeal);
@@ -61,13 +71,13 @@ export class MealsProtoComponent implements OnInit {
     this.meals.splice(mealToDeleteIndex_nr, 1);
   }
 
-  doEdit(mealEdit:MealProtoClass){
+  doEdit(mealEdit: MealProtoClass) {
     this.mealHttp.editMeal(mealEdit).subscribe();
-     this.showEditFormVar=false;
-     this.whichMealForEdit=-1;
+    this.showEditFormVar = false;
+    this.whichMealForEdit = -1;
   }
-  showEditForm(index_nr: number):void{
-    this.showEditFormVar=true;
-    this.whichMealForEdit=this.whichClicked;
+  showEditForm(index_nr: number): void {
+    this.showEditFormVar = true;
+    this.whichMealForEdit = this.whichClicked;
   }
 }

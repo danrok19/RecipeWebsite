@@ -1,14 +1,17 @@
-
 <body>
-    <ul>
-        <li *ngFor="let meal of meals;index as i; odd as isOdd; even as isEven" (click) = "mealClicked(i)">
-            <span *ngIf="meal.CategoryId==this._id">
-                <app-meal-proto [isClicked]="whichClicked===i" [meal] = "meal" (doDeleteInParent)="deleteMeal(meal)" (showEditForm)="showEditForm($event)"></app-meal-proto><!--To jest przekazywanie przez zmienna-->
-                <span *ngIf="whichMealForEdit==i">
-                    <app-edit-meal-proto [mealForEdit]="meal" (editMethod)="doEdit($event)"></app-edit-meal-proto>
-                </span>
-            </span>
-        </li>
-    </ul>
-    <app-add-meal-proto style="margin: auto"  (newMeal)="onMealAdded($event)"></app-add-meal-proto>
+  <input placeholder="Wyszukaj danie..." type="text" [formControl]="mealsFilter">
+  <ul>
+    <li *ngFor="let meal of meals | flexFilter:filterValue;index as i; odd as isOdd; even as isEven"
+      (click)="mealClicked(i)">
+      <span *ngIf="meal.CategoryId==this._id">
+        <app-meal-proto [isClicked]="whichClicked===i" [meal]="meal" (doDeleteInParent)="deleteMeal(meal)"
+          (showEditForm)="showEditForm($event)"></app-meal-proto>
+        <!--To jest przekazywanie przez zmienna-->
+        <span *ngIf="whichMealForEdit==i">
+          <app-edit-meal-proto [mealForEdit]="meal" (editMethod)="doEdit($event)"></app-edit-meal-proto>
+        </span>
+      </span>
+    </li>
+  </ul>
+  <app-add-meal-proto style="margin: auto" (newMeal)="onMealAdded($event)"></app-add-meal-proto>
 </body>
