@@ -1,4 +1,3 @@
-import { CategoryProtoClass } from "./category-proto";
 
 export type MealProto={
     name: string
@@ -13,7 +12,8 @@ export type MealHttp={
     rating: number,
     ingredientsList: Array<String>,
     description: string,
-    categoryId: number
+    categoryId: number,
+    tagsList: Array<String>
 }
 
 export class MealProtoClass {
@@ -24,7 +24,8 @@ export class MealProtoClass {
       private rating: number,
       private ingredientsList: Array<String>,
       private description: string,
-      private categoryId: number
+      private categoryId: number,
+      private tagsList: Array<String>
     ) {}
   
     get Name(): string {
@@ -86,4 +87,12 @@ export class MealProtoClass {
     set CategoryId(categoryId: number) {
       this.categoryId = categoryId;
     }
+    get TagsList(): Array<String>{
+      return this.tagsList;
+  }
+
+  set TagsList(tagsList: Array<String>){
+    this.tagsList = tagsList;
+  }
+    
 }

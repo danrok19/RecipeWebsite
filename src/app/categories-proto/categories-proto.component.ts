@@ -12,6 +12,9 @@ export class CategoriesProtoComponent implements OnInit {
   categories: CategoryProtoClass[] = [];
   whichClicked: number = -1;
 
+  _showEditForm:boolean= false;
+  whichCategoryForEdit:number =-1;
+
   constructor(private categoryHttp: CategoriesHttpService) {
     categoryHttp.getCategories().subscribe(
       data => this.categories=data
@@ -21,7 +24,7 @@ export class CategoriesProtoComponent implements OnInit {
   ngOnInit(): void {
   }
   categoryClicked(index:number):void{
-    console.log("Klikles")
+    console.log("Klikles"+index);
     this.whichClicked=index;
   }
 
@@ -33,5 +36,23 @@ export class CategoriesProtoComponent implements OnInit {
   onCategoryAdded(newCategory: CategoryProtoClass) {
     //this.categories.push(newCategory);
     this.addCategory(newCategory);
+  }
+
+  deleteCategory(deleteCategory: CategoryProtoClass) {
+    const categoryToDeleteIndex_nr = this.categories.findIndex((category) => {
+      return category.Index_nr === deleteCategory.Index_nr;
+    });
+    this.categories.splice(categoryToDeleteIndex_nr, 1);
+  }
+
+
+  doEdit(categoryEdit:CategoryProtoClass){
+    this.categoryHttp.editCategory(categoryEdit).subscribe();
+     this._showEditForm=false;
+     this.whichCategoryForEdit=-1;
+  }
+  showEditForm(index_nr: number):void{
+    this._showEditForm=true;
+    this.whichCategoryForEdit=this.whichClicked;
   }
 }

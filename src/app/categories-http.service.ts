@@ -46,6 +46,33 @@ export class CategoriesHttpService {
       );
   }
 
+  // editCategory(category:CategoryProtoClass):Observable<CategoryProtoClass>{
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  //   };
+
+  //   return this.http.put<CategoryProtoClass>(this.url + '/' + category.Index_nr, category, httpOptions)
+  //   .pipe(
+  //     catchError(this.handleError('editCategory', category))
+  //   );
+
+  // }
+  editCategory(category:CategoryProtoClass):Observable<CategoryProtoClass>{
+    console.log("wywolanie w service edit category o index_nr: "+category.Index_nr);
+    console.log(category.Name);
+    const httpOptions = {
+           headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+         };
+    const _url = `${this.url}/${category.Index_nr}`; 
+
+    return this.http.put<CategoryProtoClass>(_url, category, httpOptions)
+    .pipe(
+      catchError(this.handleError('editCategory', category))
+    );
+    
+  }
+  
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(operation + ' failed' + error);

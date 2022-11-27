@@ -27,6 +27,8 @@ import { FlexFilterPipe } from './flex-filter.pipe';
 
 import { DeleteCategoryProtoComponent } from './delete-category-proto/delete-category-proto.component';
 import { DirFormaterDirective } from './dir-formater.directive';
+import { EditCategoryProtoComponent } from './edit-category-proto/edit-category-proto.component';
+import { EditMealProtoComponent } from './edit-meal-proto/edit-meal-proto.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { DirFormaterDirective } from './dir-formater.directive';
     FlexFilterPipe,
     DeleteCategoryProtoComponent,
     DirFormaterDirective,
+    EditCategoryProtoComponent,
+    EditMealProtoComponent
   ],
   imports: [
     BrowserModule,

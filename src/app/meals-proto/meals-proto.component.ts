@@ -14,6 +14,9 @@ export class MealsProtoComponent implements OnInit {
   meals: MealProtoClass[] = []
   whichClicked: number = -1;
 
+  showEditFormVar= false;
+  whichMealForEdit=-1;
+
 
   id: any;
   _id: number;
@@ -27,10 +30,10 @@ export class MealsProtoComponent implements OnInit {
          data => this.meals=data
       );
 
-      console.log(this.meals);
+      //console.log(this.meals);
   }
   addMeal(newMeal: MealProtoClass) {
-    const meal = new MealProtoClass(newMeal.Name,newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Description, newMeal.CategoryId);
+    const meal = new MealProtoClass(newMeal.Name,newMeal.TimePrep, newMeal.Index_nr, newMeal.Rating, newMeal.Ingredients, newMeal.Description, newMeal.CategoryId, newMeal.TagsList);
     this.mealHttp.addMeal(meal).subscribe(ret => this.meals.push(meal));
   }
 
@@ -56,5 +59,15 @@ export class MealsProtoComponent implements OnInit {
       return meal.Index_nr === deleteMeal.Index_nr;
     });
     this.meals.splice(mealToDeleteIndex_nr, 1);
+  }
+
+  doEdit(mealEdit:MealProtoClass){
+    this.mealHttp.editMeal(mealEdit).subscribe();
+     this.showEditFormVar=false;
+     this.whichMealForEdit=-1;
+  }
+  showEditForm(index_nr: number):void{
+    this.showEditFormVar=true;
+    this.whichMealForEdit=this.whichClicked;
   }
 }

@@ -21,8 +21,9 @@ export class MealsHttpService {
         rating:number,
         ingredientsList: Array<String>,
         description: string,
-        categoryId: number}[])=>meals.map(meal=>{
-          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId);
+        categoryId: number,
+        tagsList: Array<String>}[])=>meals.map(meal=>{
+          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId,meal.tagsList);
         })),
         catchError(this.handleError<MealProtoClass[]>('getMeals',[]))
     );
@@ -39,8 +40,9 @@ export class MealsHttpService {
         rating:number,
         ingredientsList: Array<String>,
         description: string,
-        categoryId: number}[])=>meals.map(meal=>{
-          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId);
+        categoryId: number,
+        tagsList: Array<String>}[])=>meals.map(meal=>{
+          return new MealProtoClass (meal.name, meal.timePrep,meal.index_nr,meal.rating, meal.ingredientsList, meal.description, meal.categoryId, meal.tagsList);
         })),
         catchError(this.handleError<MealProtoClass[]>(`getMeal index_nr=${index_nr}`))
     );
@@ -87,6 +89,22 @@ export class MealsHttpService {
         catchError(this.handleError('deleteMeal'))
       );
   }
+
+  editMeal(meal:MealProtoClass):Observable<MealProtoClass>{
+    console.log("wywolanie w service edit meala o index_nr: "+meal.Index_nr);
+    console.log(meal.Name);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    const _url = `${this.url}/${meal.Index_nr}`; 
+
+    return this.http.put<MealProtoClass>(_url, meal, httpOptions)
+    .pipe(
+      catchError(this.handleError('editMeal', meal))
+    );
+    
+  }
+  
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

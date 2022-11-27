@@ -63,9 +63,6 @@
         <div class="Time">
           Czas
           <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
-          <div appDirFormater date="{{myDate | date:'short'}}" sep="/" color="red" font="courier">
-            Dodany dnia: {{myDate}}
-          </div>
         </div>
         <p>Składniki:</p>
         <ul *ngFor="let ingredient of meal.Ingredients">

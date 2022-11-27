@@ -1,0 +1,54 @@
+
+<form [formGroup]="formModel" (ngSubmit)="hide()">
+    <h2>Edytuj wybrane danie :)</h2>
+    <label for="name">Nazwa:</label>
+    <input type="text" id="name" formControlName="name">
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="alert">
+      <small *ngIf="name?.errors?.['required']">
+        Nazwa jest wymagana.
+      </small>
+      <small *ngIf="name?.errors?.['minlength']">
+        Nazwa musi mieć co najmniej 3 znaki.
+      </small>
+    </div>
+      
+    <label for="timePrep">Czas przygotowania:</label>
+    <input type="number" id="timePrep" formControlName="timePrep">
+    <div *ngIf="timePrep?.invalid && (timePrep?.dirty || timePrep?.touched)" class="alert">
+      <small *ngIf="timePrep?.errors?.['required']">
+        Czas przygotowania jest wymagany.<br>
+      </small>
+      <small *ngIf="timePrep?.errors?.['min'] || timePrep?.errors?.['max']">
+        Czas przygotowania powinien być większy niż 0, mniejszy niż 999.<br>
+      </small>
+      <small *ngIf="timePrep?.errors?.['pattern']">
+        Czas przygotowania powinien być długością w minutach.<br>
+      </small>
+    </div>
+   
+   
+    <label for="rating">Trudność przygotowania:</label>
+    <input type="number" id="rating" formControlName="rating" min="1" max="5">
+    <div *ngIf="rating?.invalid && (rating?.dirty || rating?.touched)" class="alert">
+      <small *ngIf="rating?.errors?.['required']">
+        Trudność przygotowania jest wymagana.
+      </small>
+      <small *ngIf="rating?.errors?.['min'] || rating?.errors?.['max']">
+        Trudność przygotowania powinna być w przedziale 0 - łatwy do 5 - bardzo trudny.<br>
+      </small>
+    </div>
+
+    <label for="description">Przepis:</label>
+    <textarea class="extraLabel" type="string" id="description" formControlName="description"></textarea>
+    <div *ngIf="description?.invalid && (description?.dirty || description?.touched)" class="alert">
+      <small *ngIf="description?.errors?.['required']">
+        Opis jest wymagany.
+      </small>
+    </div>
+
+    <input type="submit"  value="Save">
+    <small *ngIf="formModel.invalid">
+      Proszę wypełnić wszystkie pola przed dodaniem przepisu.
+    </small>
+  
+  </form>
