@@ -8,89 +8,90 @@ import { MealProto, MealProtoClass } from '../types/meal-proto';
   styleUrls: ['./meal-proto.component.css']
 })
 export class MealProtoComponent implements OnInit {
-  @Input() meal:MealProtoClass;
-  @Input() isClicked:boolean = false;
+  @Input() meal: MealProtoClass;
+  @Input() isClicked: boolean = false;
   category: String;
   imgSrc: String;
   showDetails: number = -1;
   mealToDelete: number = -1;
+  myDate = Date.now();
   //deleteThis: boolean = false;
   @Output() doDeleteInParent = new EventEmitter<void>();
 
-  mealDis:String;
+  mealDis: String;
   constructor(private mealHttp: MealsHttpService) { }
 
   ngOnInit(): void {
-    this.mealDis = " Opis: "+this.meal.Description.slice(0, 60) + "...";
-    if(this.meal.Name == 'Bigos'){
-      this.imgSrc='assets/images/Bigos.jpg'
+    this.mealDis = " Opis: " + this.meal.Description.slice(0, 60) + "...";
+    if (this.meal.Name == 'Bigos') {
+      this.imgSrc = 'assets/images/Bigos.jpg'
     }
-    else if(this.meal.Name == 'Zupa pomidorowa'){
-      this.imgSrc='assets/images/pomidorowa.jpg'
+    else if (this.meal.Name == 'Zupa pomidorowa') {
+      this.imgSrc = 'assets/images/pomidorowa.jpg'
     }
-    else if(this.meal.Name == 'Indyk'){
-      this.imgSrc='assets/images/indukWarzywa.jpg'
+    else if (this.meal.Name == 'Indyk') {
+      this.imgSrc = 'assets/images/indukWarzywa.jpg'
     }
-    else if(this.meal.Name == 'Burger'){
-      this.imgSrc='assets/images/burger.jpg'
+    else if (this.meal.Name == 'Burger') {
+      this.imgSrc = 'assets/images/burger.jpg'
     }
-    else if(this.meal.Name == 'Schabowy z ziemniakami'){
-      this.imgSrc='assets/images/schabowy.jpg'
+    else if (this.meal.Name == 'Schabowy z ziemniakami') {
+      this.imgSrc = 'assets/images/schabowy.jpg'
     }
-    else if(this.meal.CategoryId == 0){
-      this.imgSrc='assets/images/polishFoods.jpg'
+    else if (this.meal.CategoryId == 0) {
+      this.imgSrc = 'assets/images/polishFoods.jpg'
     }
-    else if(this.meal.CategoryId == 1){
-      this.imgSrc='assets/images/slaskaKuchnia.jpg'
+    else if (this.meal.CategoryId == 1) {
+      this.imgSrc = 'assets/images/slaskaKuchnia.jpg'
     }
-    else if(this.meal.CategoryId == 2){
-      this.imgSrc='assets/images/americanFood.jpg'
+    else if (this.meal.CategoryId == 2) {
+      this.imgSrc = 'assets/images/americanFood.jpg'
     }
-    else if(this.meal.CategoryId == 3){
-      this.imgSrc='assets/images/italianCuisine.jpg'
+    else if (this.meal.CategoryId == 3) {
+      this.imgSrc = 'assets/images/italianCuisine.jpg'
     }
-    else if(this.meal.CategoryId == 4){
-      this.imgSrc='assets/images/vegeCuisine.jpg'
+    else if (this.meal.CategoryId == 4) {
+      this.imgSrc = 'assets/images/vegeCuisine.jpg'
     }
-    else if(this.meal.CategoryId == 5){
-      this.imgSrc='assets/images/cookies.jpg'
+    else if (this.meal.CategoryId == 5) {
+      this.imgSrc = 'assets/images/cookies.jpg'
     }
-    else{
-      this.imgSrc='assets/images/defaultFood.jpg'
+    else {
+      this.imgSrc = 'assets/images/defaultFood.jpg'
     }
-    
 
-    
-    if(this.meal.CategoryId == 0){
-      this.category='Kuchnia polska'
+
+
+    if (this.meal.CategoryId == 0) {
+      this.category = 'Kuchnia polska'
     }
-    else if(this.meal.CategoryId == 1){
-      this.category='Kuchnia sląska'
+    else if (this.meal.CategoryId == 1) {
+      this.category = 'Kuchnia sląska'
     }
-    else if(this.meal.CategoryId == 2){
-      this.category='Kuchnia amerykańska'
+    else if (this.meal.CategoryId == 2) {
+      this.category = 'Kuchnia amerykańska'
     }
-    else if(this.meal.CategoryId == 3){
-      this.category='Kuchnia włoska'
+    else if (this.meal.CategoryId == 3) {
+      this.category = 'Kuchnia włoska'
     }
-    else if(this.meal.CategoryId == 4){
-      this.category='Kuchnia wegańska'
+    else if (this.meal.CategoryId == 4) {
+      this.category = 'Kuchnia wegańska'
     }
-    else if(this.meal.CategoryId == 5){
-      this.category='Ciasta'
+    else if (this.meal.CategoryId == 5) {
+      this.category = 'Ciasta'
     }
 
   }
-  doUnClick(){
+  doUnClick() {
     this.isClicked = false;
   }
-  ShowDetails(){
+  ShowDetails() {
     this.showDetails = this.meal.Index_nr;
   }
-  HideDetails(){
+  HideDetails() {
     this.showDetails = -1;
   }
-  deleteMeal(){
+  deleteMeal() {
     console.log("delete" + this.meal.Index_nr);
     this.mealHttp.deleteMeal(this.meal.Index_nr).subscribe();
   }

@@ -1,4 +1,3 @@
-
 <!--    <div class="card">
         <div class="image">
             <img width="500" height="195" src={{imgSrc}} alt="">
@@ -21,64 +20,67 @@
             <button class="btn">Pokaz przepis</button>
         </div>
     </div>-->"
-    <div class="card"  *ngIf = "showDetails===-1">
-        <div class="image">
-            <img width="500" height="195" src={{imgSrc}} alt="">
-        </div>
-        <div class="info">
-            <div class="title">
-                <h3>{{meal.Name}}</h3>
-                <h6 style="color: orange">{{category}}</h6>
-                <p>Poziom trudności: {{meal.Rating}}</p>
-            </div>
-            <!-- <span *ngIf = "isClicked">
+<div class="card" *ngIf="showDetails===-1">
+  <div class="image">
+    <img width="500" height="195" src={{imgSrc}} alt="">
+  </div>
+  <div class="info">
+    <div class="title">
+      <h3>{{meal.Name}}</h3>
+      <h6 style="color: orange">{{category}}</h6>
+      <p>Poziom trudności: {{meal.Rating}}</p>
+    </div>
+    <!-- <span *ngIf = "isClicked">
                 <input type="text" [(ngModel)]="meal.Rating"/>
                 <button (click) = "doUnClick()">Chowaj Edytor</button>
             </span> -->
-            <div class="Time">
-                Czas
-                <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
-            </div>
-        </div>
-        <div class="btn">
-            <button (click)="ShowDetails()" class="btn">Pokaz przepis</button>
-            <button (click)="deleteThisMeal()">Usuń</button>
-        </div>
-        <div class="Dis">
-            <p>{{mealDis}}</p>
-        </div>
-        <app-delete-meal-proto *ngIf="mealToDelete!=-1" (isDelete)="isDelete($event)"></app-delete-meal-proto>
+    <div class="Time">
+      Czas
+      <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
     </div>
+  </div>
+  <div class="btn">
+    <button (click)="ShowDetails()" class="btn">Pokaz przepis</button>
+    <button (click)="deleteThisMeal()">Usuń</button>
+  </div>
+  <div class="Dis">
+    <p>{{mealDis}}</p>
+  </div>
+  <app-delete-meal-proto *ngIf="mealToDelete!=-1" (isDelete)="isDelete($event)"></app-delete-meal-proto>
+</div>
 
 
-        <div class="cardDetails"  *ngIf = "showDetails!=-1">
-            <div class="image">
-                <img width="500" height="195" src={{imgSrc}} alt="">
-            </div>
-            <div>
-                <div class="info">
-                    <div class="title">
-                        <h3>{{meal.Name}}</h3>
-                        <h6 style="color: orange">{{category}}</h6>
-                        <p>Poziom trudności: {{meal.Rating}}</p>
-                        <div class="Time">
-                            Czas
-                            <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
-                        </div>
-                        <p>Składniki:</p>
-                        <ul *ngFor="let ingredient of meal.Ingredients">
-                            <li>
-                                {{ingredient}}
-                            </li>
-                        </ul>
-                        <div class="discrip">
-                            <p>Opis przygotowania:</p>
-                            {{meal.Description}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="btn">
-                <button  (click)="HideDetails()" class="btn">Schowaj przepis</button>
-                <button (click)="deleteThisMeal()" class="btn">Usuń danie</button>
-            </div>
+<div class="cardDetails" *ngIf="showDetails!=-1">
+  <div class="image">
+    <img width="500" height="195" src={{imgSrc}} alt="">
+  </div>
+  <div>
+    <div class="info">
+      <div class="title">
+        <h3>{{meal.Name}}</h3>
+        <h6 style="color: orange">{{category}}</h6>
+        <p>Poziom trudności: {{meal.Rating}}</p>
+        <div class="Time">
+          Czas
+          <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
+          <div appDirFormater date="{{myDate | date:'short'}}" sep="/" color="red" font="courier">
+            Dodany dnia: {{myDate}}
+          </div>
+        </div>
+        <p>Składniki:</p>
+        <ul *ngFor="let ingredient of meal.Ingredients">
+          <li>
+            {{ingredient}}
+          </li>
+        </ul>
+        <div class="discrip">
+          <p>Opis przygotowania:</p>
+          {{meal.Description}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn">
+    <button (click)="HideDetails()" class="btn">Schowaj przepis</button>
+    <button (click)="deleteThisMeal()" class="btn">Usuń danie</button>
+  </div>
