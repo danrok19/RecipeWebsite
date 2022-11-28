@@ -12,7 +12,7 @@ export class CategoriesHttpService {
 
   constructor(private http: HttpClient) { }
   getCategories():Observable<CategoryProtoClass[]>{
-    console.log("get categories");
+    console.log("Wywolanie getCategories()");
     return this.http.get<CategoryHttp[]>(this.url)
     .pipe(
       map((categories:{name:string,
@@ -24,6 +24,7 @@ export class CategoriesHttpService {
 
 
   addCategory(category: CategoryProtoClass): Observable<CategoryProtoClass> {
+    console.log("Wywolanie addCategory() dodajac nowa kategorie o id: " + category.Index_nr);
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -46,17 +47,6 @@ export class CategoriesHttpService {
       );
   }
 
-  // editCategory(category:CategoryProtoClass):Observable<CategoryProtoClass>{
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  //   };
-
-  //   return this.http.put<CategoryProtoClass>(this.url + '/' + category.Index_nr, category, httpOptions)
-  //   .pipe(
-  //     catchError(this.handleError('editCategory', category))
-  //   );
-
-  // }
   editCategory(category:CategoryProtoClass):Observable<CategoryProtoClass>{
     console.log("wywolanie w service edit category o index_nr: "+category.Index_nr);
     console.log(category.Name);
