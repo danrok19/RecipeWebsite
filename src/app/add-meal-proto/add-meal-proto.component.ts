@@ -1,13 +1,7 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-} from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MealProtoClass } from '../types/meal-proto';
 import { MealsHttpService } from 'src/meals-http.service';
-import { MealServiceService } from '../meal-service.service';
 import { CategoriesHttpService } from '../categories-http.service';
 import { CategoryProtoClass } from '../types/category-proto';
 import { TagsService } from '../tags.service';
@@ -38,17 +32,6 @@ export class AddMealProtoComponent implements OnInit {
      tagsService.tagsAsync.subscribe(
        data => this.tags=data
    );
-
-   
-  }
-
-
-  addIngredient(): void {
-    this.ingredients.push(
-      new FormControl({
-        ingredient: new FormControl(),
-      })
-    );
   }
 
   findFreeIndex(): number {
@@ -159,7 +142,6 @@ export class AddMealProtoComponent implements OnInit {
         ingredient: new FormControl(),
       })
     );
-    this.findCategoryId()
     //console.log("ingredients", this.ingredients);
   }
 
@@ -175,9 +157,5 @@ export class AddMealProtoComponent implements OnInit {
           this.chosenTags.splice(usuwany, 1);
         }
       }
-
-    // for(let i=0;i<this.chosenTags.length;i++){
-    //   console.log(this.chosenTags[i]);
-    // }
   }
 }
