@@ -7,9 +7,12 @@ import { MealProto, MealProtoClass } from '../types/meal-proto';
   templateUrl: './meal-proto.component.html',
   styleUrls: ['./meal-proto.component.css']
 })
+
 export class MealProtoComponent implements OnInit {
   @Input() meal: MealProtoClass;
   @Input() isClicked: boolean = false;
+  color: string;
+  appDirFormater: string;
   category: String;
   imgSrc: String;
   showDetails: number = -1;
@@ -85,6 +88,8 @@ export class MealProtoComponent implements OnInit {
     else if (this.meal.CategoryId == 5) {
       this.category = 'Ciasta'
     }
+    
+    
 
   }
   doUnClick() {

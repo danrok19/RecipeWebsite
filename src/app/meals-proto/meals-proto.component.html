@@ -1,8 +1,8 @@
 <body>
-  <input placeholder="Wyszukaj danie..." type="text" [formControl]="mealsFilter">
+  <h3 style="color: white; font-size: 30px;">Jesteś w kategorii: {{categories[this._id].Name}}</h3>
+  <input placeholder="Wyszukaj danie..." type="text" class="wyszukajDanie" [formControl]="mealsFilter">
   <ul>
-    <li *ngFor="let meal of meals | flexFilter:filterValue;index as i; odd as isOdd; even as isEven"
-      (click)="mealClicked(i)">
+    <li *ngFor="let meal of meals | flexFilter:filterValue; index as i;" (click)="mealClicked(i)">
       <span *ngIf="meal.CategoryId==this._id">
         <app-meal-proto [isClicked]="whichClicked===i" [meal]="meal" (doDeleteInParent)="deleteMeal(meal)"
           (showEditForm)="showEditForm($event)"></app-meal-proto>

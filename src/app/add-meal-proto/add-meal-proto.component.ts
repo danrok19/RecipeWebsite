@@ -166,7 +166,16 @@ export class AddMealProtoComponent implements OnInit {
   tagClicked(index:number):void{
     console.log("Klikles tag o id:"+index);
     this.whichClicked=index;
-    this.chosenTags.push(this.tags[index])
+    let element = this.tags[index];
+    if(!this.chosenTags.includes(element))
+      this.chosenTags.push(element);
+      else{
+        const usuwany = this.chosenTags.indexOf(element)
+        if (usuwany > -1){
+          this.chosenTags.splice(usuwany, 1);
+        }
+      }
+
     // for(let i=0;i<this.chosenTags.length;i++){
     //   console.log(this.chosenTags[i]);
     // }

@@ -1,128 +1,155 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+@import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-.card{
-    background: rgb(0, 132, 255);
-    width: 340px;
-    height: 470px;
-    border-radius: 10px;
-    color: #060a1f;
-}
-.card .image > img{
-    max-width: 100%;
-    border-radius:10px;
-}
-.card .info{
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 0px 30px 15px 30px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.card .info h3{
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 5px;
+.card {
+  background: rgb(11, 218, 233);
+  width: 340px;
+  height: 470px;
+  border-radius: 10px;
+  color: #060a1f;
+  margin: 10px;
+}
+.card .image > img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+.card .info {
+    content: "";
+  display: table;
+  clear: both;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0px 15px 15px 15px;
 }
 
-.card .info p{
-    font-size: 18px;
-    font-weight: 600;
-    color: gold;
+.card .info h3 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
-.card .Time{
-    text-align: right;
-    color: #252525;
-
-}
-.card .btn{
-    display: flex;
-    justify-content: space-around;
-    border: none;
-}
-.card .btn button{
-    padding: 10px 30px;
-    border: none;
-    border-radius: 10px;
-    background: #060a1f;
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-    cursor:pointer;
-}
-.input{
-    width: 10px;
-}
-.Dis{
-    padding: 20px 30px;
+.card .info p {
+  font-size: 18px;
+  font-weight: 600;
+  color: gold;
 }
 
-.cardDetails{
-    background: rgb(0, 132, 255);
-    display: flex;
-    width:1800px;
-    border-radius: 10px;
-    color: #060a1f;
-}
-.cardDetails .image > img{
-    width: 400px;
-    border-radius:10px;
-}
-.cardDetails .info{
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 0px 30px 15px 30px;
+.card .Time {
+  text-align: right;
+  color: #252525;
 }
 
-.cardDetails .info h3{
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 5px;
+.card .title h3 {
+  display: block;
+  margin: auto;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 10px 10px;
+  font-size: 24px;
+  font-weight: 700;
+  height: 10vh;
+  min-height: 8vh;
+}
+.card .btn {
+  display: flex;
+  justify-content: space-around;
+  border: none;
+}
+.card .btn button {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  background: #060a1f;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.input {
+  width: 10px;
+}
+.Dis {
+  padding: 15px 15px 15px 15px;
 }
 
-.cardDetails .info p{
-    font-size: 18px;
-    font-weight: 600;
-    color: purple;
+.cardDetails {
+  background: rgb(0, 132, 255);
+  display: flex;
+  width: 100%;
+  border-radius: 10px;
+  color: #060a1f;
+}
+.cardDetails .image > img {
+  width: 300px;
+  border-radius: 10px;
+}
+.cardDetails .info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0px 30px 15px 30px;
 }
 
-.cardDetails .Time{
-    text-align: right;
-    color: #252525;
-
-}
-.cardDetails .btn{
-    display: flex;
-    justify-content: space-around;
-    border: none;
-}
-.cardDetails .btn button{
-    padding: 10px 5px;
-    border: none;
-    border-radius: 10px;
-    background: rgb(0, 132, 255);
-    color: white;
-    font-size: 15px;
-    font-weight: 700;
-    cursor:pointer;
-    text-align: center;
+.cardDetails .info h3 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
-.cardDetails .discrip{
-    background: rgb(11, 218, 233);
-    border-radius: 5px;
-    width: 1000px;
-    padding: 10px 10px;
+.cardDetails .info p {
+  font-size: 18px;
+  font-weight: 600;
+  color: purple;
 }
-.row{
-    display: inline;
-    color:white;
+
+.cardDetails .Time {
+  text-align: right;
+  color: #252525;
+}
+.cardDetails .btn {
+  display: flex;
+  justify-content: space-around;
+}
+.cardDetails .btn .button {
+  padding: 10px 30px;
+  margin-top: 2vh;
+  border: none;
+  border-radius: 10px;
+  background: #060a1f;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cardDetails .discrip {
+  background: rgb(11, 218, 233);
+  border-radius: 5px;
+  width: 1000px;
+  padding: 10px 10px;
+}
+.row {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.columnleft {
+    height: 6vh;
+  float: left;
+  width: 60%;
+}
+
+.columnright {
+    height: 6vh;
+  float: left;
+  width: 40%;
 }

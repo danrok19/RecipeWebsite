@@ -1,25 +1,36 @@
 form {
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-    padding: 10px 20px;
-    width: 50%;
-    right: 0;
-    border-radius: 8px;
-    background-color: rgb(11, 218, 233);
-    justify-content: center;
-  }
-  input,
-  button {
-    margin-top: 5px;
-    margin-bottom: 10px;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid black;
-  }
-  button {
-    cursor: pointer;
-  }
-  .extraLabel{
-    height: 200px;
-  }
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  padding: 10px 20px;
+  width: 50%;
+  right: 0;
+  border-radius: 8px;
+  background-color: rgb(11, 218, 233);
+  justify-content: center;
+}
+input, textarea {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  
+}
+button {
+margin-top: 5px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 10px 30px;
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+  cursor:pointer;
+}
+.extraLabel {
+  height: 200px;
+}
+
+

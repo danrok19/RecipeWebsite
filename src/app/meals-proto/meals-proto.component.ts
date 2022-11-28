@@ -3,8 +3,9 @@ import { FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MealsHttpService } from 'src/meals-http.service';
 import { MealServiceService } from '../meal-service.service';
-import { DeleteMealComponent } from '../meal/delete-meal/delete-meal.component';
 import { MealProto, MealProtoClass } from '../types/meal-proto';
+import { CategoriesHttpService } from '../categories-http.service';
+import { CategoryProtoClass } from '../types/category-proto';
 
 @Component({
   selector: 'app-meals-proto',
@@ -17,6 +18,7 @@ export class MealsProtoComponent implements OnInit {
   mealsFilter: FormControl = new FormControl();
   showEditFormVar = false;
   whichMealForEdit = -1;
+  categories: CategoryProtoClass[] = [];
 
   //items: FormArray;
   filterValue: string;
@@ -26,14 +28,10 @@ export class MealsProtoComponent implements OnInit {
   id: any;
   _id: number;
 
-  constructor(private route: ActivatedRoute, private mealService: MealServiceService, private mealHttp: MealsHttpService) {
-    //this.meals = mealService.Meals;
-    // mealService.MealsAsync.subscribe(
-    //   data => this.meals=data
-    // );
-    mealHttp.getMeals().subscribe(
-      data => this.meals = data
-    );
+  constructor(private route: ActivatedRoute, private mealHttp: MealsHttpService, private categoryHttp: CategoriesHttpService) {
+    mealHttp.getMeals().subscribe((data) => (this.meals = data));
+    categoryHttp.getCategories().subscribe((data) => (this.categories = data));
+    mealHttp.getMeals().subscribe((data) => (this.meals = data));
 
     this.mealsFilter.valueChanges.subscribe({
       next: val => { this.filterValue = val; },

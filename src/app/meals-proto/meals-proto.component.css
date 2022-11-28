@@ -7,13 +7,26 @@ body{
     height: 85%;
     overflow-y: scroll;
 }
-li{
-    margin:10px;
-}
+
+
 ul{
+    padding-left: 0px;
     display:flex;
     justify-content: center;
     align-items: center;
     flex-wrap:wrap;
     list-style-type: none;
+}
+
+.wyszukajDanie { 
+    padding: 10px 10px 10px 10px;
+    border: none;
+    margin-left: 25%;
+    margin-top: 3vh;
+    border-radius: 10px;
+    color: black;
+    font-size: 15px;
+    font-weight: 700;
+    cursor:pointer;
+    min-width: 50%;
 }

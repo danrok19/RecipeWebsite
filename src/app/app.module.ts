@@ -7,8 +7,8 @@ import { MealComponent } from './meal/meal.component';
 import { MealsComponent } from './meals/meals.component';
 import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu/menu.component';
-import { DeleteMealComponent } from './meal/delete-meal/delete-meal.component';
-import { EditMealComponent } from './meal/edit-meal/edit-meal.component';
+// import { DeleteMealComponent } from './meal/delete-meal/delete-meal.component';
+// import { EditMealComponent } from './meal/edit-meal/edit-meal.component';
 import { MealProtoComponent } from './meal-proto/meal-proto.component';
 import { MealsProtoComponent } from './meals-proto/meals-proto.component';
 import { CategoryProtoComponent } from './category-proto/category-proto.component';
@@ -36,8 +36,8 @@ import { EditMealProtoComponent } from './edit-meal-proto/edit-meal-proto.compon
     MealsComponent,
     MealComponent,
     MenuComponent,
-    DeleteMealComponent,
-    EditMealComponent,
+    // DeleteMealComponent,
+    // EditMealComponent,
     MealProtoComponent,
     MealsProtoComponent,
     CategoryProtoComponent,
