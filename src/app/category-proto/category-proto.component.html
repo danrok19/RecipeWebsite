@@ -3,12 +3,12 @@
     <div class="image">
         <img width="500" height="195" src={{imgSrc}} alt="">
     </div>
-    <div class="info">
-        <div class="title">
-            <h3>{{category. Name}}</h3>
+    <div class="info" >
+        <div class="title" style="text-align:center">
+            <h3 style="text-align:center">{{category.Name}}</h3>
         </div>
     </div>
-    <div class="btn">
+    <div class="btn" style="position: relative">
         <button class="btn" [routerLink]="['/Przepisy',category.Index_nr]">Wybierz kategorie<ion-icon name="download-outline"></ion-icon></button>
     </div>
 

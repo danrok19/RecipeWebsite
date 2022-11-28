@@ -1,46 +1,26 @@
-<!--    <div class="card">
-        <div class="image">
-            <img width="500" height="195" src={{imgSrc}} alt="">
-        </div>
-        <div class="info">
-            <div class="title">
-                <h3>{{meal.name}}</h3>
-                <p>Ocena: {{meal.rating}}</p>
-            </div>
-            <span *ngIf = "isClicked">
-                <input type="text" [(ngModel)]="meal.rating"/>
-                <button (click) = "doUnClick()">Chowaj Edytor</button>
-            </span>
-            <div class="Time">
-                Czas
-                <ion-icon name="time-outline"></ion-icon>: {{meal.realizationTime}} minut
-            </div>
-        </div>
-        <div class="btn">
-            <button class="btn">Pokaz przepis</button>
-        </div>
-    </div>-->"
-<div class="card" *ngIf="showDetails===-1">
+<div class="card" *ngIf="showDetails===-1" [appDirFormater]="color" defaultColor="#29b6f6">
   <div class="image">
     <img width="500" height="195" src={{imgSrc}} alt="">
   </div>
+
+  <div class="title" style="text-align:center">
+    <h3>{{meal.Name}}</h3>
+  </div>
+
   <div class="info">
-    <div class="title">
-      <h3>{{meal.Name}}</h3>
-      <h6 style="color: orange">{{category}}</h6>
-      <p>Poziom trudności: {{meal.Rating}}</p>
+    <div class="columnleft">
+      <h6 style="color: yellow">Poziom trudności: {{meal.Rating}}</h6>
     </div>
-    <!-- <span *ngIf = "isClicked">
-                <input type="text" [(ngModel)]="meal.Rating"/>
-                <button (click) = "doUnClick()">Chowaj Edytor</button>
-            </span> -->
-    <div class="Time">
-      Czas
-      <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
+    <div class="columnright">
+      <div class="Time">
+        <h6>Czas
+          <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
+        </h6>
+      </div>
     </div>
   </div>
   <div class="btn">
-    <button (click)="ShowDetails()" class="btn">Pokaz przepis</button>
+    <button (click)="ShowDetails()" class="btn">Pokaż przepis</button>
     <button (click)="deleteThisMeal()">Usuń</button>
   </div>
   <div class="Dis">
@@ -54,38 +34,41 @@
   <div class="image">
     <img width="500" height="195" src={{imgSrc}} alt="">
   </div>
-  <div>
-    <div class="info">
-      <div class="title">
-        <h3>{{meal.Name}}</h3>
-        <h6 style="color: orange">{{category}}</h6>
-        <p>Poziom trudności: {{meal.Rating}}</p>
-        <ul class="row" *ngFor="let tag of meal.TagsList">
-          <span>
-              <ion-icon name="pricetags-outline"></ion-icon>{{tag}}
-          </span>
-      </ul>
-        <div class="Time">
+
+  <div class="info" style="display: inline; margin:0">
+    <div class="title" style="display: container;">
+      <h3>{{meal.Name}}</h3>
+      <div>
+        <div style="width: 50%; float: left; min-height: 8.5vh;">
+          <h6 style="color: yellow">Poziom trudności: {{meal.Rating}}</h6>
+          <ul class="row" *ngFor="let tag of meal.TagsList">
+            <span>
+              <h6 style="color: white"><ion-icon name="pricetags-outline"></ion-icon>{{tag}}</h6>
+            </span>
+          </ul>
+        </div>
+        <div class="Time" style="width: 50%; float: left; min-height: 8.5vh;">
           Czas
           <ion-icon name="time-outline"></ion-icon>: {{meal.TimePrep}} minut
-          <div appDirFormater date="{{myDate | date:'short'}}" sep="/" color="red" font="courier">
-            Dodany dnia: {{myDate}}
+          <div>
+            Zaczęto przeglądać: {{myDate | date:'short':'+0100':'pl'}}
           </div>
-        </div>
-        <p>Składniki:</p>
-        <ul *ngFor="let ingredient of meal.Ingredients">
-          <li>
-            {{ingredient}}
-          </li>
-        </ul>
-        <div class="discrip">
-          <p>Opis przygotowania:</p>
-          {{meal.Description}}
         </div>
       </div>
     </div>
+    <p>Składniki:</p>
+    <ul *ngFor="let ingredient of meal.Ingredients">
+      <li>
+        {{ingredient}}
+      </li>
+    </ul>
+    <div class="discrip">
+      <p>Opis przygotowania:</p>
+      {{meal.Description}}
+    </div>
+    <div class="btn">
+      <button (click)="HideDetails()" class="button">Schowaj przepis</button>
+      <button (click)="clickOnMeal(meal.Index_nr)" class="button">Edytuj przepis</button>
+    </div>
   </div>
-  <div class="btn">
-    <button (click)="HideDetails()" class="btn">Schowaj przepis</button>
-    <button (click)="clickOnMeal(meal.Index_nr)">Edytuj przepis</button>
-  </div>
+</div>
