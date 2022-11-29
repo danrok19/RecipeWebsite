@@ -11,7 +11,7 @@ export class MealsHttpService {
 
   constructor(private http: HttpClient) { }
 
-  getMeals():Observable<MealProtoClass[]>{
+  getMeals():Observable<MealProtoClass[]>{ 
     console.log("Wywolanie getMeals()");
     return this.http.get<MealHttp[]>(this.url)
     .pipe(

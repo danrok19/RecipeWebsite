@@ -1,9 +1,9 @@
 
-export type MealProto={
-    name: string
-    realizationTime: number
-    rating: number
-}
+// export type MealProto={
+//     name: string
+//     realizationTime: number
+//     rating: number
+// }
 
 export type MealHttp={
     name: string,

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MealsHttpService } from 'src/meals-http.service';
-import { MealProto, MealProtoClass } from '../types/meal-proto';
+import { MealProtoClass } from '../types/meal-proto';
 
 @Component({
   selector: 'app-meal-proto',

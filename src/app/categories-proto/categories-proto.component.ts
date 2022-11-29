@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoriesHttpService } from '../categories-http.service';
 import { CategoryProtoClass } from '../types/category-proto';
-import { MealProto } from '../types/meal-proto';
 
 @Component({
   selector: 'app-categories-proto',

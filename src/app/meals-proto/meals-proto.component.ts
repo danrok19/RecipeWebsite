@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { MealsHttpService } from 'src/meals-http.service';
-import { MealServiceService } from '../meal-service.service';
-import { MealProto, MealProtoClass } from '../types/meal-proto';
+import { MealProtoClass } from '../types/meal-proto';
 import { CategoriesHttpService } from '../categories-http.service';
 import { CategoryProtoClass } from '../types/category-proto';
 
@@ -22,7 +21,6 @@ export class MealsProtoComponent implements OnInit {
 
   //items: FormArray;
   filterValue: string;
-  mealsarr: MealProto[] = []
 
 
   id: any;

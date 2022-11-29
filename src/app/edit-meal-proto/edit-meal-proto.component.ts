@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MealProtoClass } from '../types/meal-proto';
 
 @Component({
@@ -10,7 +10,7 @@ import { MealProtoClass } from '../types/meal-proto';
 export class EditMealProtoComponent {
   @Input() mealForEdit:MealProtoClass;
   @Output("editMethod") doEditInParent:EventEmitter<MealProtoClass>=new EventEmitter();
-  mealNewValues: MealProtoClass;
+  //mealNewValues: MealProtoClass;
   formModel: FormGroup;
 
   constructor() {
